@@ -21,7 +21,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jahanwalsh.justlyrics.MainActivity" />
         </activity>
-        <activity android:name=".About"></activity>
+        <activity android:name=".About" />
+        <activity
+            android:name=".Lyrics"
+            android:label="@string/title_activity_lyrics"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ArtistActivity"></activity>
     </application>
 
 </manifest>

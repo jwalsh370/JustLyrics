@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mButton) {
             String artist = mArtistEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, LyricsActivity.class);
+            Intent intent = new Intent(MainActivity.this, ArtistActivity.class);
             intent.putExtra("artist", artist);
             startActivity(intent);
         }

@@ -6,12 +6,12 @@ import android.widget.ArrayAdapter;
 
 
 
-public class MyLyricsArrayAdapter extends ArrayAdapter {
+public class MyArtistArrayAdapter extends ArrayAdapter {
     private Context mContext;
     private String[] mArtists;
     private String[] mSongs;
 
-    public MyLyricsArrayAdapter(Context mContext, int resource, String[] mArtists, String[] mSongs) {
+    public MyArtistArrayAdapter(Context mContext, int resource, String[] mArtists, String[] mSongs) {
         super(mContext, resource);
         this.mContext = mContext;
         this.mArtists = mArtists;
