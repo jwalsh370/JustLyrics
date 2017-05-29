@@ -1,6 +1,7 @@
 package com.jahanwalsh.justlyrics;
 
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,7 +44,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.button) Button mButton;
-//    @Bind(R.id.locationEditText) EditText mLocationEditText;
+    @Bind(R.id.artistEditText) EditText mArtistEditText;
     @Bind(R.id.justLyricsTextView) TextView mjustLyricsTextView;
 
     @Override
@@ -60,9 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mButton) {
-//            String location = mLocationEditText.getText().toString();
+            String artist = mArtistEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, LyricsActivity.class);
-//            intent.putExtra("location", location);
+            intent.putExtra("artist", artist);
             startActivity(intent);
         }
     }

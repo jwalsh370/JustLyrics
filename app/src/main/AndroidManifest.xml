@@ -19,10 +19,9 @@
         <activity android:name=".LyricsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.jahanwalsh.justlyrics.MainActivity">
-            </meta-data>
+                android:value="com.jahanwalsh.justlyrics.MainActivity" />
         </activity>
-
+        <activity android:name=".artistSearch"></activity>
     </application>
 
 </manifest>

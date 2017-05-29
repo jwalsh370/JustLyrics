@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JustLyrics</string>
+    <string name="title_activity_artist">artist</string>
 </resources>
