@@ -35,8 +35,6 @@ public class ArtistActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.listView);
         mArtistTextView = (TextView) findViewById(R.id.artistTextView);
 
-//        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants);
-
         MyArtistArrayAdapter adapter = new MyArtistArrayAdapter(this, android.R.layout.simple_list_item_1,
                 artists, songs); //must match constructor!
 
