@@ -5,7 +5,7 @@
 #### By _**Jahan Walsh (jwalsh370)**_
 
 ## Description
-An Android App (using Android Studio, Gradle, Git,and Atom) that allows users to input An artist name and recieve songs and lyrics.
+An Android App (using Android Studio, Gradle, Git,and Atom) that allows users to input an artist name or song and recieve lyrics.
 
 ## Setup/Installation Requirements
 
