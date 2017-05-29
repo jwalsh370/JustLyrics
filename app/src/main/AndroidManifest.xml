@@ -21,7 +21,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jahanwalsh.justlyrics.MainActivity" />
         </activity>
-        <activity android:name=".artistSearch"></activity>
+        <activity android:name=".ArtistSearch" />
+        <activity android:name=".About"></activity>
     </application>
 
 </manifest>
