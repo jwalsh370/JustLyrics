@@ -29,7 +29,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/colorAccent"
-        android:text="Just Lyrics"
+        android:text="Lyrics"
         android:textColor="@color/colorTextIcons"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
