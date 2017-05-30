@@ -1,7 +1,6 @@
 package com.jahanwalsh.justlyrics;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 
 
@@ -22,7 +21,7 @@ public class MyArtistArrayAdapter extends ArrayAdapter {
     public Object getItem(int position) {
         String artists = mArtists[position];
         String songs = mSongs[position];
-        return String.format("%s \nServes great: %s", artists, songs);
+        return String.format("%s \nSong Name: %s", artists, songs);
 
     }
 
