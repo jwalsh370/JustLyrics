@@ -54,8 +54,6 @@ public class ArtistActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        String song = intent.getStringExtra("song");
-        mSongTextView.setText("This artist has: " + song);
 
     }
 }

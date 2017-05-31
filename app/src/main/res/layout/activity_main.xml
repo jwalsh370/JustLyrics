@@ -27,6 +27,7 @@
         android:layout_width="219dp"
         android:layout_height="151dp"
         android:text="Just Lyrics"
+        android:textColor="@color/colorTextIcons"
         android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
         android:textSize="30sp"
         android:typeface="monospace"
