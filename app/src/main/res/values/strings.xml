@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">JustLyrics</string>
     <string name="title_activity_lyrics">Lyrics</string>
+    <string name="aboutButton_text">About</string>
+    <string name="about_head">About</string>
+    <string name="about_1">
+        Just Lyrics is a site that aims to provide a very important service. The retrieval of lyrics!
+    </string>
+    <string name="about_2">
+        To often we find our selves sing along to our favourite songs, but when the music cuts out...
+    </string>
+    <string name="about_3">This application is for karaoke enthusiasts, for those who strive to understand the deeper meaning of songs, or just for people who can\'t understand a word of whats being said.
+    </string>
+    <string name="about_4">
+           simply search an artist or album and begin your journey!
+    </string>
 </resources>
