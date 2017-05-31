@@ -1,4 +1,4 @@
-package com.jahanwalsh.justlyrics;
+package com.jahanwalsh.justlyrics.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jahanwalsh.justlyrics.MyArtistArrayAdapter;
+import com.jahanwalsh.justlyrics.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

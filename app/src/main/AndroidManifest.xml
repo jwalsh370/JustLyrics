@@ -9,24 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LyricsActivity">
+        <activity android:name=".activities.AboutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.jahanwalsh.justlyrics.MainActivity" />
+                android:value="com.jahanwalsh.justlyrics.activities.MainActivity">
+            </meta-data>
         </activity>
-        <activity android:name=".About" />
-        <activity
-            android:name=".Lyrics"
-            android:label="@string/title_activity_lyrics"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ArtistActivity"></activity>
+        <activity android:name=".activities.ArtistActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jahanwalsh.justlyrics.activities.MainActivity">
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>

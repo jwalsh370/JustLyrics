@@ -1,4 +1,4 @@
-package com.jahanwalsh.justlyrics;
+package com.jahanwalsh.justlyrics.activities;
 
 
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.graphics.Typeface;
+
+//import com.jahanwalsh.justlyrics.AboutActivity;
+import com.jahanwalsh.justlyrics.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if(v == mAboutButton) {
-            Intent aboutIntent = new Intent(MainActivity.this, About.class);
+            Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(aboutIntent);
         }
     }
