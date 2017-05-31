@@ -38,12 +38,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mButton) {
             String artist = mArtistEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, ArtistActivity.class);
-            intent.putExtra("artist", artist);
-            startActivity(intent);
+            if (artist.length() == 0) {
+                mArtistEditText.setError("This field is Required!");
+            } else {
+                Intent intent = new Intent(MainActivity.this, ArtistActivity.class);
+                intent.putExtra("artist", artist);
+                startActivity(intent);
+            }
+
 
         }
-
         if(v == mAboutButton) {
             Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(aboutIntent);
