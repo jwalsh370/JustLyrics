@@ -16,7 +16,7 @@ An Android App (using Android Studio, Gradle, Git,and Atom) that allows users to
 3. Build/Run project.
 
 ## Know Bugs
-* About Button causes app to crash.
+* ** no known bugs at this time **
 
 ## Technology Used To Create Portfolio
 Android Studio, Gradle, Git,and Atom
