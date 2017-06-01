@@ -59,18 +59,19 @@ public class ArtistActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String artists = ((TextView) view).getText().toString();
-                Toast.makeText(ArtistActivity.this, artists, Toast.LENGTH_LONG).show();
+                String name = ((TextView) view).getText().toString();
+                Toast.makeText(ArtistActivity.this, name, Toast.LENGTH_LONG).show();
             }
         });
 
         Intent intent = getIntent();
-
+         String artist = "prince";
+        getArtists(artist);
     }
 
-    private void getArtists(String artists) {
+    private void getArtists(String name) {
         final ArtistService artistService = new ArtistService();
-        artistService.findArtist(artists, new Callback() {
+        artistService.findArtist(name, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -83,7 +84,7 @@ public class ArtistActivity extends AppCompatActivity {
                     String jsonData = response.body().string();
                     if (response.isSuccessful()) {
                         Log.v(TAG, jsonData);
-                        mArtists = artistService.processResults(response);
+//                        mArtists = artistService.processResults(response);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -21,46 +21,51 @@ import okhttp3.Response;
 
 
 public class ArtistService {
-    public static final String TAG = ArtistService.class.getSimpleName();
 
     public static void findArtist(String name, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
+        urlBuilder.addQueryParameter("format", "json");
+        urlBuilder.addQueryParameter("callback", "callback");
         urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
-        urlBuilder.addQueryParameter(Constants.API_KEY, Constants.API_KEY);
+        urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
 
+
+        String url = urlBuilder.build().toString();
+        Log.d("test", url);
 
         Request request = new Request.Builder()
+                .url(url)
                 .build();
 
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
-        public ArrayList<Artist> processResults(Response response) {
-            ArrayList<Artist> lyrics = new ArrayList<>();
-
-            try {
-
-                if (response.isSuccessful()) {
-                    String jsonData = response.body().string();
-                    JSONObject lyricJSON = new JSONObject(jsonData);
-                    String name = lyricJSON.getJSONArray("lyrics").getJSONObject(0).getString("artist");
-                    String track = lyricJSON.getString("track");
-
-                    Artist instanceOf = new Artist(name,track);
-                    lyrics.add(instanceOf);
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            return lyrics;
-        }
-
+//        public ArrayList<Artist> processResults(Response response) {
+//            ArrayList<Artist> lyrics = new ArrayList<>();
+//
+//            try {
+//
+//                if (response.isSuccessful()) {
+//                    String jsonData = response.body().string();
+//                    JSONObject lyricJSON = new JSONObject(jsonData);
+//                    String name = lyricJSON.getJSONArray("lyrics").getJSONObject(0).getString("artist");
+//                    String track = lyricJSON.getString("track");
+//
+//                    Artist instanceOf = new Artist(name,track);
+//                    lyrics.add(instanceOf);
+//
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            return lyrics;
+//        }
+//
 
 
 }
