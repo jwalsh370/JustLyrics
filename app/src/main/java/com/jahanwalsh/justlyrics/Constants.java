@@ -1,15 +1,11 @@
 package com.jahanwalsh.justlyrics;
 
-/**
- * Created by jahanwalsh on 5/31/17.
- */
 
 public class Constants {
-    public static final String API_CONSUMER_KEY = BuildConfig.API_CONSUMER_KEY;
-    public static final String API_BASE_URL = "https://artist.search?q_artist=";
-    public static final String API_ARTIST_QUERY_PARAMETER = "artist" + "&page_size=5";
-    public static final String API_KEY_QUERY_PARAMETER = "appid";
+    public static final String API_KEY = BuildConfig.API_KEY;
+    public static final String API_BASE_URL = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=";
+    public static final String API_ARTIST_QUERY_PARAMETER = "name";
+    public static final String API_TRACK_QUERY_PARAMETER = "track"+"&q_artist=";
 
 
 }
-

@@ -19,23 +19,17 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by jahanwalsh on 5/31/17.
- */
 
 public class ArtistService {
+    public static final String TAG = ArtistService.class.getSimpleName();
 
-
-    public static void findArtist(String artist, Callback callback) {
-         String TAG = ArtistService.class.getSimpleName();
-
+    public static void findArtist(String name, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
-        urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, artist);
-        urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_CONSUMER_KEY);
-        String url = urlBuilder.build().toString();
+        urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
+        urlBuilder.addQueryParameter(Constants.API_KEY, Constants.API_KEY);
 
         Log.d("url", url);
 
@@ -46,33 +40,30 @@ public class ArtistService {
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
-    public ArrayList<Artist> processResults(Response response) {
-        ArrayList<Artist> artist = new ArrayList<>();
+        public ArrayList<Artist> processResults(Response response) {
+            ArrayList<Artist> lyrics = new ArrayList<>();
 
+            try {
 
-        try {
+                if (response.isSuccessful()) {
+                    String jsonData = response.body().string();
+                    JSONObject lyricJSON = new JSONObject(jsonData);
+                    String name = lyricJSON.getJSONArray("lyrics").getJSONObject(0).getString("artist");
+                    String track = lyricJSON.getString("track");
 
-            if (response.isSuccessful()) {
-                String jsonData = response.body().string();
+                    Artist instanceOf = new Artist(name,track);
+                    lyrics.add(instanceOf);
 
-                JSONObject artistJSON = new JSONObject(jsonData);
-                String artists = artistJSON.getJSONArray("artist").getJSONObject(0).getString("artists");
-
-
-                Artist instanceOf = new Artist(artists);
-                artist.add(instanceOf);
-
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+            return lyrics;
+        }
 
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return artist;
-    }
 
 }
 

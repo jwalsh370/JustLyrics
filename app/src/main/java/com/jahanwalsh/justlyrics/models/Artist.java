@@ -1,20 +1,23 @@
 package com.jahanwalsh.justlyrics.models;
 
 
-/**
- * Created by jahanwalsh on 6/1/17.
- */
-
 
 public class Artist {
-    private String mArtists;
+    private String mName;
+    private String mTrack;
 
-    public Artist (String artists){
-        this.mArtists = artists;
+    public Artist (String name, String track){
+
+        this.mName = name;
+        this.mTrack = track;
     }
 
-    public String getArtists(){
-        return mArtists;
+    public String getName() {
+        return mName;
+    }
+
+    public String getTrack(){
+        return mTrack;
     }
 }
 

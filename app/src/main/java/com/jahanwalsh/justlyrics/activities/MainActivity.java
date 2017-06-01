@@ -2,6 +2,7 @@ package com.jahanwalsh.justlyrics.activities;
 
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
