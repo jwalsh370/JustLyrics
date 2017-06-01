@@ -7,14 +7,14 @@ package com.jahanwalsh.justlyrics.models;
 
 
 public class Artist {
-    private String mArtist;
+    private String mArtists;
 
-    public Artist (String artist){
-        this.mArtist = artist;
+    public Artist (String artists){
+        this.mArtists = artists;
     }
 
-    public String getArtist(){
-        return mArtist;
+    public String getArtists(){
+        return mArtists;
     }
 }
 
