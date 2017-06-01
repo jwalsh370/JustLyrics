@@ -84,7 +84,7 @@ public class ArtistActivity extends AppCompatActivity {
                     String jsonData = response.body().string();
                     if (response.isSuccessful()) {
                         Log.v(TAG, jsonData);
-//                        mArtists = artistService.processResults(response);
+                        mArtists = artistService.processResults(response);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

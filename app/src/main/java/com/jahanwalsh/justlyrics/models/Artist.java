@@ -6,18 +6,18 @@ public class Artist {
     private String mName;
     private String mTrack;
 
-    public Artist (String name, String track){
+    public Artist (String name){
 
         this.mName = name;
-        this.mTrack = track;
+//        this.mTrack = track;
     }
 
     public String getName() {
         return mName;
     }
 
-    public String getTrack(){
-        return mTrack;
-    }
+//    public String getTrack(){
+//        return mTrack;
+//    }
 }
 

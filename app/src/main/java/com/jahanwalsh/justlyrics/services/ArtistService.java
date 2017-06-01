@@ -43,29 +43,29 @@ public class ArtistService {
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
-//        public ArrayList<Artist> processResults(Response response) {
-//            ArrayList<Artist> lyrics = new ArrayList<>();
-//
-//            try {
-//
-//                if (response.isSuccessful()) {
-//                    String jsonData = response.body().string();
-//                    JSONObject lyricJSON = new JSONObject(jsonData);
-//                    String name = lyricJSON.getJSONArray("lyrics").getJSONObject(0).getString("artist");
+        public ArrayList<Artist> processResults(Response response) {
+            ArrayList<Artist> lyrics = new ArrayList<>();
+
+            try {
+
+                if (response.isSuccessful()) {
+                    String jsonData = response.body().string();
+                    JSONObject lyricJSON = new JSONObject(jsonData);
+                    String name = lyricJSON.getJSONArray("lyrics").getJSONObject(0).getString("name");
 //                    String track = lyricJSON.getString("track");
-//
-//                    Artist instanceOf = new Artist(name,track);
-//                    lyrics.add(instanceOf);
-//
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            return lyrics;
-//        }
-//
+
+                    Artist instanceOf = new Artist(name);
+                    lyrics.add(instanceOf);
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return lyrics;
+        }
+
 
 
 }
