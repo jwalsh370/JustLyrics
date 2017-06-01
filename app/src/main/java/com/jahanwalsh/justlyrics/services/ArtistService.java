@@ -1,20 +1,16 @@
-package com.jahanwalsh.justlyrics;
+package com.jahanwalsh.justlyrics.services;
 
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.jahanwalsh.justlyrics.Constants;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import okhttp3.Callback;
 
 import okhttp3.Call;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
+
 /**
  * Created by jahanwalsh on 5/31/17.
  */
