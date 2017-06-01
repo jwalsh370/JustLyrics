@@ -31,10 +31,8 @@ public class ArtistService {
         urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
         urlBuilder.addQueryParameter(Constants.API_KEY, Constants.API_KEY);
 
-//        Log.d("url", url);
 
         Request request = new Request.Builder()
-//                .url(url)
                 .build();
 
         Call call = client.newCall(request);

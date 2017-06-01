@@ -31,7 +31,7 @@ repositories {
         }
 
         buildTypes.each {
-            it.buildConfigField 'String', 'API_KEY' API_KEY
+            it.buildConfigField 'String', 'API_KEY', API_KEY
         }
 
         dependencies {
