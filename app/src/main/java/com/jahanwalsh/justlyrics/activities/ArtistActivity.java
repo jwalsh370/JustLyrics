@@ -40,8 +40,6 @@ public class ArtistActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String artist = "prince";
-         getArtists(artist);
         String name = intent.getStringExtra("name");
         mSongTextView.setText("Here are all the songs by: " + name);
         getArtists(name);
