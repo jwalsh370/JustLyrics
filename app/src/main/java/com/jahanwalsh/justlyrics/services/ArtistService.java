@@ -44,19 +44,21 @@ public class ArtistService {
         call.enqueue(callback);
     }
         public ArrayList<Artist> processResults(Response response) {
-            ArrayList<Artist> lyrics = new ArrayList<>();
+            ArrayList<Artist> artist = new ArrayList<>();
 
             try {
 
                 if (response.isSuccessful()) {
                     String jsonData = response.body().string();
 
-                    JSONObject lyricJSON = new JSONObject(jsonData);
-                    String name = lyricJSON.getJSONArray("lyrics").getJSONObject(0).getString("name");
+                    JSONObject artistJSON = new JSONObject(jsonData);
+//                    JSONArray JSON = yelpJSON.getJSONArray("businesses");
+//                    for (int i = 0; i < businessesJSON.length(); i++) {
+                    String name = artistJSON.getJSONArray("artist").getJSONObject(0).getString("name");
 //                    String track = lyricJSON.getString("track");
 
                     Artist instanceOf = new Artist(name);
-                    lyrics.add(instanceOf);
+                    artist.add(instanceOf);
                     Log.d("test", name);
                 }
             } catch (IOException e) {
@@ -65,11 +67,8 @@ public class ArtistService {
                 e.printStackTrace();
             }
 
-            return lyrics;
+            return artist;
         }
-
-
-
 }
 
 
