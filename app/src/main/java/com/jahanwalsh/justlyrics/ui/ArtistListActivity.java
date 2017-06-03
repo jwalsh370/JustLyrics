@@ -1,4 +1,4 @@
-package com.jahanwalsh.justlyrics.activities;
+package com.jahanwalsh.justlyrics.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,13 +24,13 @@ import butterknife.ButterKnife;
 
 
 
-public class ArtistActivity extends AppCompatActivity {
+public class ArtistListActivity extends AppCompatActivity {
     @Bind(R.id.songTextView)
     public TextView mSongTextView;
     @Bind(R.id.listView)
     ListView mListView;
 
-    public static final String TAG = ArtistActivity.class.getSimpleName();
+    public static final String TAG = ArtistListActivity.class.getSimpleName();
     public ArrayList<Artist> mArtists = new ArrayList<>();
 
     @Override
@@ -59,7 +59,7 @@ public class ArtistActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response)
             {
                 mArtists = artistService.processResults(response);
-                ArtistActivity.this.runOnUiThread(new Runnable() {
+                ArtistListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         String[] artistNames = new String[mArtists.size()];
@@ -67,7 +67,7 @@ public class ArtistActivity extends AppCompatActivity {
                             artistNames[i] = mArtists.get(i).getName();
                         }
 
-                        ArrayAdapter adapter = new ArrayAdapter(ArtistActivity.this,
+                        ArrayAdapter adapter = new ArrayAdapter(ArtistListActivity.this,
                                 android.R.layout.simple_list_item_1, artistNames);
                         mListView.setAdapter(adapter);
 

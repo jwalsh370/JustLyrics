@@ -1,4 +1,4 @@
-package com.jahanwalsh.justlyrics.activities;
+package com.jahanwalsh.justlyrics.ui;
 
 
 import android.content.Intent;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (artist.length() == 0) {
                 mArtistEditText.setError("This field is Required!");
             } else {
-                Intent intent = new Intent(MainActivity.this, ArtistActivity.class);
+                Intent intent = new Intent(MainActivity.this, ArtistDetailActivity.class);
                 intent.putExtra("artist", artist);
                 startActivity(intent);
             }

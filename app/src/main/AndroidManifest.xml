@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action
@@ -22,21 +22,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.AboutActivity"
+            android:name=".ui.AboutActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.jahanwalsh.justlyrics.activities.MainActivity">
+                android:value="com.jahanwalsh.justlyrics.ui.MainActivity">
             </meta-data>
 
         <activity
-            android:name=".activities.ArtistActivity"
+            android:name=".ui.ArtistDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.jahanwalsh.justlyrics.activities.MainActivity">
+                android:value="com.jahanwalsh.justlyrics.ui.MainActivity">
             </meta-data>
         </application>
  </manifest>

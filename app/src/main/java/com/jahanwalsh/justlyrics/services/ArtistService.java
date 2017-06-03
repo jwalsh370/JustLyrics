@@ -27,7 +27,6 @@ public class ArtistService {
     public static void findArtist(String name, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
-        name = "prince";
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter("format", "json");
         urlBuilder.addQueryParameter("callback", "callback");
