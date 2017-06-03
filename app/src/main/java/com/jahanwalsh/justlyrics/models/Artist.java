@@ -1,27 +1,19 @@
 package com.jahanwalsh.justlyrics.models;
-import org.parceler.Parcel;
 
-import java.util.ArrayList;
+import org.parceler.Parcel;
 
 @Parcel
 public class Artist {
     private String mName;
 
-
     public Artist() {}
-
     public Artist (String name){
         this.mName = name;
-//        this.mTrack = track;
     }
 
     public String getName() {
-
         return mName;
     }
 
-//    public String getTrack(){
-//        return mTrack;
-//    }
 }
 
