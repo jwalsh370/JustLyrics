@@ -16,7 +16,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class ArtistDetailFragment extends Fragment {
+public class ArtistDetailFragment extends Fragment{
     @Bind(R.id.artistNameTextView) TextView mNameLabel;
 
     private Artist mArtist;
@@ -24,7 +24,7 @@ public class ArtistDetailFragment extends Fragment {
     public static ArtistDetailFragment newInstance(Artist artist) {
         ArtistDetailFragment artistDetailFragment = new ArtistDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("restaurant", Parcels.wrap(artist));
+        args.putParcelable("artist", Parcels.wrap(artist));
         artistDetailFragment.setArguments(args);
         return artistDetailFragment;
     }
@@ -32,7 +32,7 @@ public class ArtistDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mArtist = Parcels.unwrap(getArguments().getParcelable("restaurant"));
+        mArtist = Parcels.unwrap(getArguments().getParcelable("artist"));
     }
 
     @Override

@@ -59,6 +59,7 @@ public class ArtistService {
 
                     Artist artist = new Artist(name);
                     lyric.add(artist);
+                    Log.d("test2", name);
                     Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
 
                 }
@@ -71,6 +72,7 @@ public class ArtistService {
         }
 
         return lyric;
+
     }
 
 }

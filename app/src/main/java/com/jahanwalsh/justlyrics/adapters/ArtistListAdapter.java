@@ -51,10 +51,10 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
     public class ArtistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.artistNameTextView)
         TextView mNameTextView;
-        @Bind(R.id.songTextView)
-        TextView mSongTextView;
-        @Bind(R.id.lyricTextView)
-        TextView mLyricTextView;
+//        @Bind(R.id.songTextView)
+//        TextView mSongTextView;
+//        @Bind(R.id.lyricTextView)
+//        TextView mLyricTextView;
 
         private Context mContext;
 
