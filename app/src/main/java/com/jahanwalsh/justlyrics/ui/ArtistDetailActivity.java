@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.adapters.ArtistPagerAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
@@ -16,11 +17,12 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+
 public class ArtistDetailActivity extends AppCompatActivity {
-    @Bind(R.id.viewPager)
-    ViewPager mViewPager;
+    @Bind(R.id.viewPager) ViewPager mViewPager;
     private ArtistPagerAdapter adapterViewPager;
     ArrayList<Artist> mArtists;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,9 @@ public class ArtistDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_artist_detail);
         ButterKnife.bind(this);
 
-        mArtists = Parcels.unwrap(getIntent().getParcelableExtra("artists"));
+
+
+        mArtists = Parcels.unwrap(getIntent().getParcelableExtra("artist"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
         adapterViewPager = new ArtistPagerAdapter(getSupportFragmentManager(), mArtists);
