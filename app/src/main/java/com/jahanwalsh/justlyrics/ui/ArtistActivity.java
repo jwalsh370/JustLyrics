@@ -39,12 +39,13 @@ import okhttp3.Response;
 
             Intent intent = getIntent();
             String name = intent.getStringExtra("artist");
-            getArtists(name);
+            String track = intent.getStringExtra("track");
+            getArtists(name,track);
         }
 
-        private void getArtists(String name) {
+        private void getArtists(String name, String track) {
             final ArtistService artistService = new ArtistService();
-            artistService.findArtist(name, new Callback() {
+            artistService.findArtist(name, track,  new Callback() {
 
                 @Override
                 public void onFailure(Call call, IOException e) {

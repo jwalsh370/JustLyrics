@@ -23,13 +23,15 @@ import okhttp3.Response;
 
 public class ArtistService {
 
-    public static void findArtist(String name, Callback callback) {
+    public static void findArtist(String name, String track, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter("format", "json");
         urlBuilder.addQueryParameter("callback", "callback");
-        urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, "prince");
+        urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, "track");
+        urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, "name");
+        urlBuilder.addQueryParameter("quorum_factor", "1");
         urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
 
         String url = urlBuilder.build().toString();
@@ -52,13 +54,14 @@ public class ArtistService {
                 Log.v("TEST", "processResults() in Service");
                 Log.d("test2", jsonData);
                 JSONObject musicJSON = new JSONObject(jsonData);
-                JSONArray artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body").getJSONArray("artist_list");
+                JSONArray artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body").getJSONArray("track_list");
 
                 for (int i = 0; i < artistsJSON.length(); i++) {
                     JSONObject artistJSON = artistsJSON.getJSONObject(i);
-                    String name = artistJSON.getJSONObject("artist").getString("artist_name");
+                    String name = artistJSON.getJSONObject("track").getString("artist_name");
+                    String track = artistJSON.getJSONObject("track").getString("track_name");
 
-                    Artist artist = new Artist(name);
+                    Artist artist = new Artist(name, track);
                     artists.add(artist);
                     Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
 
