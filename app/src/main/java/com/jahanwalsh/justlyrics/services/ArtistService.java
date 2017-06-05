@@ -51,7 +51,7 @@ public class ArtistService {
             if (response.isSuccessful()) {
                 Log.v("TEST", "processResults() in Service");
                 JSONObject musicJSON = new JSONObject(jsonData);
-                JSONArray lyricsJSON = musicJSON.getJSONArray("lyrics");
+                JSONArray lyricsJSON = musicJSON.getJSONArray("artists");
                 for (int i = 0; i < 100; i++) {
                     JSONObject lyricJSON = lyricsJSON.getJSONObject(i);
                     String name = lyricJSON.getString("name");

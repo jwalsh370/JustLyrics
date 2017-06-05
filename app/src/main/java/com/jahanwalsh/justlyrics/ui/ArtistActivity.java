@@ -1,6 +1,7 @@
 package com.jahanwalsh.justlyrics.ui;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,8 +24,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class ArtistActivity {
-    public class ArtistListActivity extends AppCompatActivity {
+
+    public class ArtistActivity extends AppCompatActivity {
         @Bind(R.id.recyclerView)
         RecyclerView mRecyclerView;
         private ArtistListAdapter mAdapter;
@@ -33,7 +34,7 @@ public class ArtistActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_artist);
+            setContentView(R.layout.artist_activity);
             ButterKnife.bind(this);
 
             Intent intent = getIntent();
@@ -54,22 +55,24 @@ public class ArtistActivity {
                 public void onResponse(Call call, Response response) {
                     mArtists = artistService.processResults(response);
 
-//                    ArtistActivity.this.runOnUiThread(new Runnable() {
-//
-//                        @Override
-//                        public void run() {
-//                            mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
-//                            mRecyclerView.setAdapter(mAdapter);
-//                            RecyclerView.LayoutManager layoutManager =
-//                                    new LinearLayoutManager(ArtistActivity.this);
-//                            mRecyclerView.setLayoutManager(layoutManager);
-//                            mRecyclerView.setHasFixedSize(true);
-//
-//                        }
-//
-//                    });
+                    ArtistActivity.this.runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager =
+                                    new LinearLayoutManager(ArtistActivity.this);
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
+
+                        }
+
+                    });
                 }
             });
         }
     }
-}
+
+
+

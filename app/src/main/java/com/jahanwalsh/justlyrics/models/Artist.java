@@ -7,12 +7,14 @@ public class Artist {
     private String mName;
 
     public Artist (String name){
+
         this.mName = name;
     }
 
     public Artist() {}
 
     public String getName() {
+
         return mName;
     }
 }

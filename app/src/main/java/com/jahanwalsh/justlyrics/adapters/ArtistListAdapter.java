@@ -3,6 +3,7 @@ package com.jahanwalsh.justlyrics.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,6 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
 
     @Override
     public int getItemCount() {
-
         return mArtists.size();
     }
 
@@ -53,32 +53,30 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
     public class ArtistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.artistNameTextView)
         TextView mNameTextView;
-//        @Bind(R.id.songTextView)
-//        TextView mSongTextView;
-//        @Bind(R.id.lyricTextView)
-//        TextView mLyricTextView;
 
         private Context mContext;
 
         public ArtistViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
         }
 
+        public void bindArtist(Artist artist) {
+            mNameTextView.setText(artist.getName());
+        }
+
         @Override
         public void onClick(View v) {
+            Log.d("click listener", "working");
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, ArtistActivity.class);
+            Intent intent = new Intent(mContext, ArtistDetailActivity.class);
             intent.putExtra("position", itemPosition);
             intent.putExtra("artists", Parcels.wrap(mArtists));
             mContext.startActivity(intent);
         }
-        public void bindArtist(Artist artist) {
-            mNameTextView.setText(artist.getName());
-//            mSongTextView.setText(artist.getName().get(0));
-//            mLyricTextView.setText("Lyric: " + artist.getLyric());
-        }
+
     }
 }
