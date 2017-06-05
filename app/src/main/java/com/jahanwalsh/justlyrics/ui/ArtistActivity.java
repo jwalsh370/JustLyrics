@@ -38,7 +38,7 @@ import okhttp3.Response;
             ButterKnife.bind(this);
 
             Intent intent = getIntent();
-            String name = intent.getStringExtra("name");
+            String name = intent.getStringExtra("artist");
             getArtists(name);
         }
 

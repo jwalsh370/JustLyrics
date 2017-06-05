@@ -50,15 +50,16 @@ public class ArtistService {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 Log.v("TEST", "processResults() in Service");
+                Log.d("test2", jsonData);
                 JSONObject musicJSON = new JSONObject(jsonData);
-                JSONArray lyricsJSON = musicJSON.getJSONArray("artists");
-                for (int i = 0; i < 100; i++) {
-                    JSONObject lyricJSON = lyricsJSON.getJSONObject(i);
-                    String name = lyricJSON.getString("name");
+                JSONArray artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body").getJSONArray("artist_list");
+
+                for (int i = 0; i < artistsJSON.length(); i++) {
+                    JSONObject artistJSON = artistsJSON.getJSONObject(i);
+                    String name = artistJSON.getJSONObject("artist").getString("artist_name");
 
                     Artist artist = new Artist(name);
                     artists.add(artist);
-                    Log.d("test2", name);
                     Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
 
                 }

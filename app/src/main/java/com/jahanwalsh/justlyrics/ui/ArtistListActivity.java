@@ -9,12 +9,7 @@ import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
 
 
-
 import java.util.ArrayList;
-
-
-
-
 
 public class ArtistListActivity extends AppCompatActivity {
 
