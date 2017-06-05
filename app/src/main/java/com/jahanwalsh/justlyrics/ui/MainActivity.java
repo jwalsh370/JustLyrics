@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (artist.length() == 0) {
                 mArtistEditText.setError("This field is Required!");
             } else {
-                Intent intent = new Intent(MainActivity.this, ArtistDetailActivity.class);
+                Intent intent = new Intent(MainActivity.this, ArtistActivity.class);
                 intent.putExtra("artist", artist);
                 startActivity(intent);
             }

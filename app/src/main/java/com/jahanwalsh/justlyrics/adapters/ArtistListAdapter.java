@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
+import com.jahanwalsh.justlyrics.ui.ArtistActivity;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
 
 import org.parceler.Parcels;
@@ -69,7 +70,7 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, ArtistDetailActivity.class);
+            Intent intent = new Intent(mContext, ArtistActivity.class);
             intent.putExtra("position", itemPosition);
             intent.putExtra("artists", Parcels.wrap(mArtists));
             mContext.startActivity(intent);

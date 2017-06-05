@@ -28,56 +28,45 @@ import butterknife.ButterKnife;
 
 
 public class ArtistListActivity extends AppCompatActivity {
-    public static final String TAG = ArtistListActivity.class.getSimpleName();
-    @Bind(R.id.songTextView)
-    public TextView mSongTextView;
-    @Bind(R.id.listView)
-    ListView mListView;
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    private ArtistListAdapter mAdapter;
-    public ArrayList<Artist> mArtists = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artist);
-        ButterKnife.bind(this);
 
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-//        mSongTextView.setText("Here are all the songs by: " + name);
-        getArtists(name);
+
     }
 
-    private void getArtists(String name) {
-        final ArtistService artistService = new ArtistService();
-        artistService.findArtist(name, new Callback(){
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response)
-            {
-                mArtists = artistService.processResults(response);
-
-                ArtistListActivity.this.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                       mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager =
-                                new LinearLayoutManager(ArtistListActivity.this);
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
-
-                        }
-
-                });
-            }
-        });
-    }
+//    private void getArtists(String name) {
+//        final ArtistService artistService = new ArtistService();
+//        artistService.findArtist(name, new Callback(){
+//
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response)
+//            {
+//                mArtists = artistService.processResults(response);
+//
+//                ArtistListActivity.this.runOnUiThread(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
+//                        mRecyclerView.setAdapter(mAdapter);
+//                        RecyclerView.LayoutManager layoutManager =
+//                                new LinearLayoutManager(ArtistListActivity.this);
+//                        mRecyclerView.setLayoutManager(layoutManager);
+//                        mRecyclerView.setHasFixedSize(true);
+//
+//                    }
+//
+//                });
+//            }
+//        });
+//    }
 }
