@@ -22,7 +22,6 @@ import okhttp3.Response;
 
 
 public class ArtistService {
-    public static final String TAG = ArtistService.class.getSimpleName();
 
     public static void findArtist(String name, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
@@ -45,20 +44,20 @@ public class ArtistService {
     }
 
     public ArrayList<Artist> processResults(Response response) {
-        ArrayList<Artist> lyric = new ArrayList<>();
+        ArrayList<Artist> lyrics = new ArrayList<>();
 
         try {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 Log.v("TEST", "processResults() in Service");
                 JSONObject musicJSON = new JSONObject(jsonData);
-                JSONArray lyricsJSON = musicJSON.getJSONArray("results");
+                JSONArray lyricsJSON = musicJSON.getJSONArray("lyrics");
                 for (int i = 0; i < 100; i++) {
                     JSONObject lyricJSON = lyricsJSON.getJSONObject(i);
                     String name = lyricJSON.getString("name");
 
                     Artist artist = new Artist(name);
-                    lyric.add(artist);
+                    lyrics.add(artist);
                     Log.d("test2", name);
                     Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
 
@@ -71,7 +70,7 @@ public class ArtistService {
             e.printStackTrace();
         }
 
-        return lyric;
+        return lyrics;
 
     }
 

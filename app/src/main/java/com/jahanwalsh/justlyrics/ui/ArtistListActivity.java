@@ -3,12 +3,15 @@ package com.jahanwalsh.justlyrics.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jahanwalsh.justlyrics.R;
+import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.services.ArtistService;
 
@@ -25,12 +28,13 @@ import butterknife.ButterKnife;
 
 
 public class ArtistListActivity extends AppCompatActivity {
+    public static final String TAG = ArtistListActivity.class.getSimpleName();
     @Bind(R.id.songTextView)
     public TextView mSongTextView;
     @Bind(R.id.listView)
     ListView mListView;
-
-    public static final String TAG = ArtistListActivity.class.getSimpleName();
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private ArtistListAdapter mAdapter;
     public ArrayList<Artist> mArtists = new ArrayList<>();
 
     @Override
@@ -41,7 +45,7 @@ public class ArtistListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
-        mSongTextView.setText("Here are all the songs by: " + name);
+//        mSongTextView.setText("Here are all the songs by: " + name);
         getArtists(name);
     }
 
@@ -51,7 +55,6 @@ public class ArtistListActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call call, IOException e) {
-
                 e.printStackTrace();
             }
 
@@ -59,23 +62,20 @@ public class ArtistListActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response)
             {
                 mArtists = artistService.processResults(response);
+
                 ArtistListActivity.this.runOnUiThread(new Runnable() {
+
                     @Override
                     public void run() {
-                        String[] artistNames = new String[mArtists.size()];
-                        for (int i = 0; i < artistNames.length; i++) {
-                            artistNames[i] = mArtists.get(i).getName();
-                        }
-
-                        ArrayAdapter adapter = new ArrayAdapter(ArtistListActivity.this,
-                                android.R.layout.simple_list_item_1, artistNames);
-                        mListView.setAdapter(adapter);
-
-                        for (Artist artist : mArtists) {
-                            Log.d(TAG, "Name: " + artist.getName());
+                       mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager =
+                                new LinearLayoutManager(ArtistListActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
 
                         }
-                    }
+
                 });
             }
         });

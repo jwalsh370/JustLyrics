@@ -44,6 +44,7 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
 
     @Override
     public int getItemCount() {
+
         return mArtists.size();
     }
 

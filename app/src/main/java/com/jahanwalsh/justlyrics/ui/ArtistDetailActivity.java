@@ -28,7 +28,7 @@ public class ArtistDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_artist_detail);
         ButterKnife.bind(this);
 
-        mArtists = Parcels.unwrap(getIntent().getParcelableExtra("artists"));
+        mArtists = Parcels.unwrap(getIntent().getParcelableExtra("artist"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
         adapterViewPager = new ArtistPagerAdapter(getSupportFragmentManager(), mArtists);
