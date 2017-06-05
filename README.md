@@ -16,7 +16,7 @@ An Android App (using Android Studio, Gradle, Git,and Atom) that allows users to
 3. Build/Run project.
 
 ## Know Bugs
-* ** no known bugs at this time **
+* Null pointer exception in ArtistPagerAdapter for mArtists, line 27
 
 ## Technology Used To Create Portfolio
 Android Studio, Gradle, Git,and Atom
