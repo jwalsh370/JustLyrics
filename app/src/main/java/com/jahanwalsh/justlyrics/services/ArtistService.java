@@ -44,7 +44,7 @@ public class ArtistService {
     }
 
     public ArrayList<Artist> processResults(Response response) {
-        ArrayList<Artist> lyrics = new ArrayList<>();
+        ArrayList<Artist> artists = new ArrayList<>();
 
         try {
             String jsonData = response.body().string();
@@ -57,7 +57,7 @@ public class ArtistService {
                     String name = lyricJSON.getString("name");
 
                     Artist artist = new Artist(name);
-                    lyrics.add(artist);
+                    artists.add(artist);
                     Log.d("test2", name);
                     Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
 
@@ -70,7 +70,7 @@ public class ArtistService {
             e.printStackTrace();
         }
 
-        return lyrics;
+        return artists;
 
     }
 

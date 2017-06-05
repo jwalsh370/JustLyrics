@@ -20,7 +20,7 @@ public class ArtistDetailActivity extends AppCompatActivity {
     @Bind(R.id.viewPager)
     ViewPager mViewPager;
     private ArtistPagerAdapter adapterViewPager;
-    ArrayList<Artist> mArtists = new ArrayList<>();
+    ArrayList<Artist> mArtists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class ArtistDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_artist_detail);
         ButterKnife.bind(this);
 
-        mArtists = Parcels.unwrap(getIntent().getParcelableExtra("artist"));
+        mArtists = Parcels.unwrap(getIntent().getParcelableExtra("artists"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
         adapterViewPager = new ArtistPagerAdapter(getSupportFragmentManager(), mArtists);

@@ -33,7 +33,6 @@ public class ArtistListActivity extends AppCompatActivity {
     public TextView mSongTextView;
     @Bind(R.id.listView)
     ListView mListView;
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private ArtistListAdapter mAdapter;
     public ArrayList<Artist> mArtists = new ArrayList<>();
 
@@ -68,11 +67,11 @@ public class ArtistListActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                        mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager =
-                                new LinearLayoutManager(ArtistListActivity.this);
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
+////                        mRecyclerView.setAdapter(mAdapter);
+//                        RecyclerView.LayoutManager layoutManager =
+//                                new LinearLayoutManager(ArtistListActivity.this);
+////                        mRecyclerView.setLayoutManager(layoutManager);
+////                        mRecyclerView.setHasFixedSize(true);
 
                         }
 
