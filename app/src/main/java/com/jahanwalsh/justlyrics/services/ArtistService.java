@@ -29,8 +29,8 @@ public class ArtistService {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter("format", "json");
         urlBuilder.addQueryParameter("callback", "callback");
-        urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, "track");
-        urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, "name");
+        urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, "purple rain");
+        urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
         urlBuilder.addQueryParameter("quorum_factor", "1");
         urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
 
