@@ -32,7 +32,6 @@ public class ArtistListActivity extends AppCompatActivity {
     private ArtistListAdapter mAdapter;
 
     public ArrayList<Artist> mArtists = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
