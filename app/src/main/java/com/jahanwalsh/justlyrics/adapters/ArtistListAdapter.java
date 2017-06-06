@@ -14,6 +14,7 @@ import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistActivity;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -24,6 +25,10 @@ import butterknife.ButterKnife;
 
 
 public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> {
+
+    private static final int MAX_WIDTH = 300;
+    private static final int MAX_HEIGHT = 350;
+
     private ArrayList<Artist> mArtists = new ArrayList<>();
     private Context mContext;
 
@@ -46,6 +51,7 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
 
     @Override
     public int getItemCount() {
+
         return mArtists.size();
     }
 
@@ -53,6 +59,10 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
     public class ArtistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.artistNameTextView)
         TextView mNameTextView;
+        @Bind(R.id.trackTextView)
+        TextView mTrackTextView;
+        @Bind(R.id.artistImageView)
+        ImageView mArtistImageView;
 
         private Context mContext;
 
@@ -65,7 +75,14 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
         }
 
         public void bindArtist(Artist artist) {
+            Picasso.with(mContext)
+                    .load(artist.getImg())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerCrop()
+                    .into(mArtistImageView);
+
             mNameTextView.setText(artist.getName());
+            mTrackTextView.setText(artist.getTrack());
         }
 
         @Override

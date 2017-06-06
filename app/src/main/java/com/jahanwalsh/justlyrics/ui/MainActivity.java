@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.button) Button mButton;
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.artistEditText) EditText mArtistEditText;
+    @Bind(R.id.trackEditText) EditText mTrackEditText;
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
 
     @Override
@@ -37,8 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mButton) {
             String artist = mArtistEditText.getText().toString();
-            if (artist.length() == 0) {
+            String track = mTrackEditText.getText().toString();
+            if (artist.length() == 0)  {
                 mArtistEditText.setError("This field is Required!");
+            } else if  (track.length() == 0) {
+                mTrackEditText.setError("This field is Required!");
             } else {
                 Intent intent = new Intent(MainActivity.this, ArtistActivity.class);
                 intent.putExtra("artist", artist);

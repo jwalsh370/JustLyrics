@@ -29,7 +29,7 @@ public class ArtistService {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter("format", "json");
         urlBuilder.addQueryParameter("callback", "callback");
-        urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, "purple rain");
+        urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, track);
         urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
         urlBuilder.addQueryParameter("quorum_factor", "1");
         urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
@@ -60,8 +60,9 @@ public class ArtistService {
                     JSONObject artistJSON = artistsJSON.getJSONObject(i);
                     String name = artistJSON.getJSONObject("track").getString("artist_name");
                     String track = artistJSON.getJSONObject("track").getString("track_name");
+                    String img = artistJSON.getJSONObject("track").getString("album_coverart_100x100");
 
-                    Artist artist = new Artist(name, track);
+                    Artist artist = new Artist(name, track, img);
                     artists.add(artist);
                     Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
 

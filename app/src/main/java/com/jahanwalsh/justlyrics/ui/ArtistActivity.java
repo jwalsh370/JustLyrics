@@ -45,7 +45,7 @@ import okhttp3.Response;
 
         private void getArtists(String name, String track) {
             final ArtistService artistService = new ArtistService();
-            artistService.findArtist(name, track,  new Callback() {
+            artistService.findArtist(name, track, new Callback() {
 
                 @Override
                 public void onFailure(Call call, IOException e) {
