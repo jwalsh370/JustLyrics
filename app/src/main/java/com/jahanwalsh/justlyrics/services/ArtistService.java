@@ -57,10 +57,7 @@ public class ArtistService {
 
                 for (int i = 0; i < artistsJSON.length(); i++) {
                     JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
-//                    String name = artistJSON.getString("artist");
-//                    String track = artistJSON.getJSONObject("track").getString("track_name");
-//                    String img = artistJSON.getJSONObject("track").getString("album_coverart_350x350");
-//                    String website = artistJSON.getJSONObject("track").getString("track_share_url");
+//
                     String lyric = artistJSON.getString("lyrics_body");
 
                     Artist artist = new Artist(lyric);

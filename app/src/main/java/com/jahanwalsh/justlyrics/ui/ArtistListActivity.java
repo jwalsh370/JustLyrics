@@ -46,8 +46,8 @@ public class ArtistListActivity extends AppCompatActivity {
         String name = intent.getStringExtra("name");
         String track = intent.getStringExtra("track");
 
-        mArtistNameTextView.setText("Here is the artist you searched for: " + name);
-        mTrackTextView.setText("Here is the track : " + track);
+//        mArtistNameTextView.setText("Here is the artist you searched for: " + name);
+//        mTrackTextView.setText("Here is the track : " + track);
 
 
         getArtists(name, track);

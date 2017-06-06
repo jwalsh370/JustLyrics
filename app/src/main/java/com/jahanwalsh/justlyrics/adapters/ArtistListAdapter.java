@@ -2,7 +2,6 @@ package com.jahanwalsh.justlyrics.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcel;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +22,6 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static android.R.attr.name;
 
 
 public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> {
@@ -59,12 +57,7 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
 
 
     public class ArtistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @Bind(R.id.artistNameTextView)
-        TextView mNameTextView;
-        @Bind(R.id.trackTextView)
-        TextView mTrackTextView;
-        @Bind(R.id.artistImageView)
-        ImageView mArtistImageView;
+
         @Bind(R.id.lyricTextView)
         TextView mLyricTextView;
 
@@ -81,15 +74,6 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
 
 
         public void bindArtist(Artist artist) {
-//            Picasso.with(mContext)
-//                    .load(artist.getImg())
-//                    .resize(MAX_WIDTH, MAX_HEIGHT)
-//                    .centerCrop()
-//                    .into(mArtistImageView);
-
-//            mNameTextView.setText("Here is the artist you searched for: " + name);
-//            mTrackTextView.setText("Here is the track : " + track);
-
             mLyricTextView.setText(artist.getLyric());
         }
 
