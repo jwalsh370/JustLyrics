@@ -2,6 +2,7 @@ package com.jahanwalsh.justlyrics.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import org.parceler.Parcels;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,11 +13,8 @@ import android.widget.TextView;
 
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
-import com.jahanwalsh.justlyrics.ui.ArtistActivity;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
 import com.squareup.picasso.Picasso;
-
-import org.parceler.Parcels;
 
 import java.util.ArrayList;
 

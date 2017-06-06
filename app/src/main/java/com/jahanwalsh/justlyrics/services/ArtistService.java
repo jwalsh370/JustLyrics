@@ -80,7 +80,6 @@ public class ArtistService {
         return artists;
 
     }
-
 }
 
 
