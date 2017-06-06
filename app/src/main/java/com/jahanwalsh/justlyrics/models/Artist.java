@@ -8,39 +8,39 @@ public class Artist {
     private String mTrack;
     private String mImg;
     private String mWebsite;
-    private String mTrackId;
+    private String mLyric;
 
-    public Artist (String name, String track, String img, String website, String trackId){
+    public Artist (String lyric){
 
-        this.mName = name;
-        this.mTrack = track;
-        this.mImg = img;
-        this.mWebsite = website;
-        this.mTrackId= trackId;
+//        this.mName = name;
+//        this.mTrack = track;
+//        this.mImg = img;
+//        this.mWebsite = website;
+        this.mLyric = lyric;
     }
 
     public Artist() {}
 
-    public String getName() {
+//    public String getName() {
+//
+//        return mName;
+//    }
+//
+//    public String getTrack(){
+//
+//        return mTrack;
+//    }
+//
+//    public String getImg(){
+//        return mImg;
+//    }
+//
+//    public String getWebsite(){
+//        return mWebsite;
+//    }
 
-        return mName;
-    }
-
-    public String getTrack(){
-
-        return mTrack;
-    }
-
-    public String getImg(){
-        return mImg;
-    }
-
-    public String getWebsite(){
-        return mWebsite;
-    }
-
-    public String getTrackId(){
-        return mTrackId;
+    public String getLyric(){
+        return mLyric;
     }
 }
 

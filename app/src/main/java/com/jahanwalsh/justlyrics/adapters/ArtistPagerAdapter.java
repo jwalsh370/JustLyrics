@@ -30,7 +30,7 @@ public class ArtistPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mArtists.get(position).getName();
+        return mArtists.get(position).getLyric();
     }
 }
 

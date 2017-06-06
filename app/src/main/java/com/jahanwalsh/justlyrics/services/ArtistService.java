@@ -31,7 +31,6 @@ public class ArtistService {
         urlBuilder.addQueryParameter("callback", "callback");
         urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, track);
         urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
-        urlBuilder.addQueryParameter("quorum_factor", "1");
         urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
 
         String url = urlBuilder.build().toString();
@@ -54,17 +53,17 @@ public class ArtistService {
                 Log.v("TEST", "processResults() in Service");
                 Log.d("test2", jsonData);
                 JSONObject musicJSON = new JSONObject(jsonData);
-                JSONArray artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body").getJSONArray("track_list");
+                JSONObject artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body");
 
                 for (int i = 0; i < artistsJSON.length(); i++) {
-                    JSONObject artistJSON = artistsJSON.getJSONObject(i);
-                    String name = artistJSON.getJSONObject("track").getString("artist_name");
-                    String track = artistJSON.getJSONObject("track").getString("track_name");
-                    String img = artistJSON.getJSONObject("track").getString("album_coverart_100x100");
-                    String website = artistJSON.getJSONObject("track").getString("track_share_url");
-                    String trackId = artistJSON.getJSONObject("track").getString("track_id");
+                    JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
+//                    String name = artistJSON.getString("artist");
+//                    String track = artistJSON.getJSONObject("track").getString("track_name");
+//                    String img = artistJSON.getJSONObject("track").getString("album_coverart_350x350");
+//                    String website = artistJSON.getJSONObject("track").getString("track_share_url");
+                    String lyric = artistJSON.getString("lyrics_body");
 
-                    Artist artist = new Artist(name, track, img, website, trackId);
+                    Artist artist = new Artist(lyric);
                     artists.add(artist);
                     Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
 

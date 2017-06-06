@@ -27,6 +27,8 @@ public class ArtistDetailFragment extends Fragment implements View.OnClickListen
 
     @Bind(R.id.artistNameTextView)
     TextView mNameLabel;
+    @Bind(R.id.lyricTextView)
+    TextView mLyricLabel;
     @Bind(R.id.websiteTextView)
     TextView mWebsiteLabel;
     @Bind(R.id.artistImageView)
@@ -54,26 +56,27 @@ public class ArtistDetailFragment extends Fragment implements View.OnClickListen
         View view = inflater.inflate(R.layout.fragment_artist_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext())
-                .load(mArtist.getImg())
-                .resize(MAX_WIDTH, MAX_HEIGHT)
-                .centerCrop()
-                .into(mImageLabel);
-
-
-        mNameLabel.setText(mArtist.getName());
-        mTrackLabel.setText(mArtist.getTrack());
+//        Picasso.with(view.getContext())
+//                .load(mArtist.getImg())
+//                .resize(MAX_WIDTH, MAX_HEIGHT)
+//                .centerCrop()
+//                .into(mImageLabel);
+//
+//
+//        mNameLabel.setText(mArtist.getName());
+//        mTrackLabel.setText(mArtist.getTrack());
+        mLyricLabel.setText(mArtist.getLyric());
         mWebsiteLabel.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        if (v == mWebsiteLabel) {
-            Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(mArtist.getWebsite()));
-            startActivity(webIntent);
-        }
+//        if (v == mWebsiteLabel) {
+//            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+//                    Uri.parse(mArtist.getWebsite()));
+//            startActivity(webIntent);
+//        }
 
-    }
+ }
 }

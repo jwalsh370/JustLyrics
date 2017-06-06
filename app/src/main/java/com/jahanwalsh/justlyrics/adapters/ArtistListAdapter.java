@@ -2,7 +2,7 @@ package com.jahanwalsh.justlyrics.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import org.parceler.Parcels;
+import android.os.Parcel;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +15,8 @@ import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -61,6 +63,8 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
         TextView mTrackTextView;
         @Bind(R.id.artistImageView)
         ImageView mArtistImageView;
+        @Bind(R.id.lyricTextView)
+        TextView mLyricTextView;
 
         private Context mContext;
 
@@ -73,14 +77,15 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
         }
 
         public void bindArtist(Artist artist) {
-            Picasso.with(mContext)
-                    .load(artist.getImg())
-                    .resize(MAX_WIDTH, MAX_HEIGHT)
-                    .centerCrop()
-                    .into(mArtistImageView);
-
-            mNameTextView.setText(artist.getName());
-            mTrackTextView.setText(artist.getTrack());
+//            Picasso.with(mContext)
+//                    .load(artist.getImg())
+//                    .resize(MAX_WIDTH, MAX_HEIGHT)
+//                    .centerCrop()
+//                    .into(mArtistImageView);
+//
+//            mNameTextView.setText(artist.getName());
+//            mTrackTextView.setText(artist.getTrack());
+            mLyricTextView.setText(artist.getLyric());
         }
 
         @Override
