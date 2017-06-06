@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -41,6 +42,8 @@ import okhttp3.Response;
             String name = intent.getStringExtra("artist");
             String track = intent.getStringExtra("track");
             getArtists(name,track);
+
+
         }
 
         private void getArtists(String name, String track) {

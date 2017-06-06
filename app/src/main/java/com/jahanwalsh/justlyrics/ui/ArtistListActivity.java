@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -26,7 +28,9 @@ import butterknife.ButterKnife;
 
 public class ArtistListActivity extends AppCompatActivity {
     public static final String TAG = ArtistListActivity.class.getSimpleName();
-
+    @Bind(R.id.artistNameTextView)
+    TextView mArtistNameTextView;
+    @Bind(R.id.trackTextView) TextView mTrackTextView;
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
     private ArtistListAdapter mAdapter;
@@ -41,6 +45,10 @@ public class ArtistListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         String track = intent.getStringExtra("track");
+
+        mArtistNameTextView.setText("Here is the artist you searched for: " + name);
+        mTrackTextView.setText("Here is the track : " + track);
+
 
         getArtists(name, track);
     }

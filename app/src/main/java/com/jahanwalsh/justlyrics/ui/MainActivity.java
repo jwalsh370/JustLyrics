@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if  (track.length() == 0) {
                 mTrackEditText.setError("This field is Required!");
             } else {
+
                 Intent intent = new Intent(MainActivity.this, ArtistActivity.class);
                 intent.putExtra("artist", artist);
                 intent.putExtra("track", track);

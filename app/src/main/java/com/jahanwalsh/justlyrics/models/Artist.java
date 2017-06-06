@@ -8,6 +8,7 @@ public class Artist {
     private String mTrack;
     private String mImg;
     private String mWebsite;
+    private String mTrackId;
     private String mLyric;
 
     public Artist (String lyric){
@@ -16,10 +17,16 @@ public class Artist {
 //        this.mTrack = track;
 //        this.mImg = img;
 //        this.mWebsite = website;
+//        this.mTrackId= trackId;
         this.mLyric = lyric;
+
     }
 
     public Artist() {}
+
+    public String getLyric() {
+        return mLyric;
+    }
 
 //    public String getName() {
 //
@@ -38,9 +45,9 @@ public class Artist {
 //    public String getWebsite(){
 //        return mWebsite;
 //    }
-
-    public String getLyric(){
-        return mLyric;
-    }
+//
+//    public String getTrackId(){
+//        return mTrackId;
+//    }
 }
 

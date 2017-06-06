@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static android.R.attr.name;
+
 
 public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> {
 
@@ -76,15 +78,18 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
             itemView.setOnClickListener(this);
         }
 
+
+
         public void bindArtist(Artist artist) {
 //            Picasso.with(mContext)
 //                    .load(artist.getImg())
 //                    .resize(MAX_WIDTH, MAX_HEIGHT)
 //                    .centerCrop()
 //                    .into(mArtistImageView);
-//
-//            mNameTextView.setText(artist.getName());
-//            mTrackTextView.setText(artist.getTrack());
+
+//            mNameTextView.setText("Here is the artist you searched for: " + name);
+//            mTrackTextView.setText("Here is the track : " + track);
+
             mLyricTextView.setText(artist.getLyric());
         }
 
