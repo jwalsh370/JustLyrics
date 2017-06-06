@@ -6,6 +6,7 @@
         android:layout_width="130dp"
         android:layout_height="100dp"
         android:id="@+id/artistImageView"
+        android:src="@drawable/record"
         android:scaleType="centerCrop"/>
 
     <LinearLayout
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/trackNameTextView"
+            android:layout_below="@+id/trackTextView"
             android:text=" Track Name"
             android:textStyle="italic" />
         <RelativeLayout

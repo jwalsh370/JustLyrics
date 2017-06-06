@@ -61,8 +61,10 @@ public class ArtistService {
                     String name = artistJSON.getJSONObject("track").getString("artist_name");
                     String track = artistJSON.getJSONObject("track").getString("track_name");
                     String img = artistJSON.getJSONObject("track").getString("album_coverart_100x100");
+                    String website = artistJSON.getJSONObject("track").getString("track_share_url");
+                    String trackId = artistJSON.getJSONObject("track").getString("track_id");
 
-                    Artist artist = new Artist(name, track, img);
+                    Artist artist = new Artist(name, track, img, website, trackId);
                     artists.add(artist);
                     Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
 
