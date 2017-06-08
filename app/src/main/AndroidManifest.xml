@@ -21,13 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.ArtistActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.jahanwalsh.justlyrics.ui.MainActivity">
-        </meta-data>
+        <activity android:name=".ui.ArtistListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity"></meta-data>
+        </activity>
+
         <activity
             android:name=".ui.AboutActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
@@ -41,9 +40,5 @@
             android:name=".ui.ArtistDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.jahanwalsh.justlyrics.ui.MainActivity">
-            </meta-data>
         </application>
  </manifest>

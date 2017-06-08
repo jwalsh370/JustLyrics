@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.graphics.Typeface;
+import android.widget.Toast;
 
 import com.jahanwalsh.justlyrics.R;
 
@@ -45,10 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mTrackEditText.setError("This field is Required!");
             } else {
 
-                Intent intent = new Intent(MainActivity.this, ArtistActivity.class);
+                Intent intent = new Intent(MainActivity.this, ArtistListActivity.class);
                 intent.putExtra("artist", artist);
                 intent.putExtra("track", track);
                 startActivity(intent);
+                Toast.makeText(MainActivity.this, "Searching for your song...", Toast.LENGTH_LONG).show();
             }
 
 

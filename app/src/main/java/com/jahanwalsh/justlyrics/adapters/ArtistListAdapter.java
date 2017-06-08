@@ -25,9 +25,7 @@ import butterknife.ButterKnife;
 
 
 public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> {
-
-    private static final int MAX_WIDTH = 300;
-    private static final int MAX_HEIGHT = 350;
+    
 
     private ArrayList<Artist> mArtists = new ArrayList<>();
     private Context mContext;
