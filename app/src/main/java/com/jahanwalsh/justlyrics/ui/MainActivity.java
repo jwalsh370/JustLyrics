@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_ARTIST);
-        mSavedArtistsButton.setOnClickListener(this);
 
         mSearchedArtistReferenceListener = mSearchedArtistReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -69,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mButton.setOnClickListener(this);
         mAboutButton.setOnClickListener(this);
+        mSavedArtistsButton.setOnClickListener(this);
+
     }
     @Override
     public void onClick(View v) {
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mTrackEditText.setError("This field is Required!");
             } else {
 
-                Intent intent = new Intent(MainActivity.this, ArtistListActivity.class);
+                Intent intent = new Intent(MainActivity.this, ArtistDetailFragment.class);
                 intent.putExtra("artist", artist);
                 intent.putExtra("track", track);
                 startActivity(intent);

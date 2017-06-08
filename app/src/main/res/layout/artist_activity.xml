@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteX="0dp">
 
     <TextView
-        android:id="@+id/artistTextView"
+        android:id="@+id/artistNameTextView"
         android:layout_width="198dp"
         android:layout_height="35dp"
         android:layout_alignParentLeft="true"
