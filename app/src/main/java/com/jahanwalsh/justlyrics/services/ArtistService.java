@@ -31,6 +31,7 @@ public class ArtistService {
         urlBuilder.addQueryParameter("callback", "callback");
         urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, track);
         urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
+        Log.d("nameTest", "name");
         urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
 
         String url = urlBuilder.build().toString();
@@ -56,8 +57,8 @@ public class ArtistService {
                 JSONObject artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body");
 
                 for (int i = 0; i < artistsJSON.length(); i++) {
+
                     JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
-//
                     String lyric = artistJSON.getString("lyrics_body");
                     String website = artistJSON.getString("html_tracking_url");
 
