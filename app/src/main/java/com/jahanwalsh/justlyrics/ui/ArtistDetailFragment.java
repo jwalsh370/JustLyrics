@@ -7,9 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.squareup.picasso.Picasso;
@@ -28,6 +33,8 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
     @Bind(R.id.websiteTextView)
     TextView mWebsiteLabel;
     @Bind(R.id.trackTextView) TextView mTrackLabel;
+    @Bind(R.id.saveArtistButton)
+    Button mSaveArtistButton;
 
     private Artist mArtist;
 
@@ -63,5 +70,14 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
             startActivity(webIntent);
         }
 
- }
+
+        if (v == mSaveArtistButton) {
+            DatabaseReference restaurantRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_ARTISTS);
+            restaurantRef.push().setValue(mArtist);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
+         }
+    }
 }

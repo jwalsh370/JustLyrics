@@ -9,4 +9,5 @@ public class Constants {
     public static final String API_TRACK_QUERY_PARAMETER= "q_track";
 
     public static final String FIREBASE_CHILD_SEARCHED_ARTIST= "searchedArtist";
+    public static final String FIREBASE_CHILD_ARTISTS = "artists";
 }

@@ -5,23 +5,23 @@ import org.parceler.Parcel;
 @Parcel
 public class Artist {
 
-    private String mLyric;
-    private String mWebsite;
+   String lyric;
+    String website;
 
     public Artist (String lyric, String website){
-        this.mLyric = lyric;
-        this.mWebsite = website;
+        this.lyric = lyric;
+        this.website = website;
 
     }
 
     public Artist() {}
 
     public String getLyric() {
-        return mLyric;
+        return lyric;
     }
 
     public String getWebsite(){
-        return mWebsite;
+        return website;
     }
 
 
