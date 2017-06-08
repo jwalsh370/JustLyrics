@@ -59,8 +59,9 @@ public class ArtistService {
                     JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
 //
                     String lyric = artistJSON.getString("lyrics_body");
+                    String website = artistJSON.getString("html_tracking_url");
 
-                    Artist artist = new Artist(lyric);
+                    Artist artist = new Artist(lyric, website);
                     artists.add(artist);
                     Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
 

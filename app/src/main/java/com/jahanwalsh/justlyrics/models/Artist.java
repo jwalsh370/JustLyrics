@@ -9,7 +9,6 @@ public class Artist {
     private String mWebsite;
 
     public Artist (String lyric, String website){
-        website = "https://developer.musixmatch.com/plans";
         this.mLyric = lyric;
         this.mWebsite = website;
 

@@ -15,7 +15,7 @@
            Simply search an artist and track to begin your journey!
     </string>
     <string name="about_5">
-           Unfortunately our API agreement only allows 30% of lyrics to be retrieved. If you would like to learn more visit the MusiXMatch Website.
+           *Unfortunately our API agreement only allows 30% of lyrics to be retrieved. If you would like to learn more visit the MusiXMatch Website.*
     </string>
 
     <!-- TODO: Remove or change this placeholder text -->

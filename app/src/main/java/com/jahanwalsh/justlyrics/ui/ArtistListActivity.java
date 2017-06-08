@@ -28,11 +28,9 @@ import butterknife.ButterKnife;
 
 public class ArtistListActivity extends AppCompatActivity {
     public static final String TAG = ArtistListActivity.class.getSimpleName();
-    @Bind(R.id.artistNameTextView)
-    TextView mArtistNameTextView;
+    @Bind(R.id.artistNameTextView) TextView mArtistNameTextView;
     @Bind(R.id.trackTextView) TextView mTrackTextView;
-    @Bind(R.id.recyclerView)
-    RecyclerView mRecyclerView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private ArtistListAdapter mAdapter;
 
     public ArrayList<Artist> mArtists = new ArrayList<>();
