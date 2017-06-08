@@ -32,8 +32,8 @@ public class ArtistDetailActivity extends AppCompatActivity {
 
 
 
-        mArtists = Parcels.unwrap(getIntent().getParcelableExtra("artist"));
-        int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
+        mArtists = Parcels.unwrap(getIntent().getParcelableExtra("artists"));
+        int startingPosition = getIntent().getIntExtra("position", 0);
 
         adapterViewPager = new ArtistPagerAdapter(getSupportFragmentManager(), mArtists);
         mViewPager.setAdapter(adapterViewPager);

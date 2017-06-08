@@ -28,12 +28,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ValueEventListener mSearchedArtistReferenceListener;
 
-
     @Bind(R.id.button) Button mButton;
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.artistEditText) EditText mArtistEditText;
     @Bind(R.id.trackEditText) EditText mTrackEditText;
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
+    @Bind(R.id.savedArtistsButton) Button mSavedArtistsButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_ARTIST);
+        mSavedArtistsButton.setOnClickListener(this);
 
         mSearchedArtistReferenceListener = mSearchedArtistReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,6 +95,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v == mAboutButton) {
             Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(aboutIntent);
+        }
+
+        if (v == mSavedArtistsButton) {
+            Intent intent = new Intent(MainActivity.this, SavedArtistListActivity.class);
+            startActivity(intent);
         }
     }
 
