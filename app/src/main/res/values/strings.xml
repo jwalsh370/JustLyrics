@@ -12,7 +12,10 @@
     <string name="about_3">We created Just Lyrics to help ease the burden of forgetfulness. This application is for karaoke enthusiasts, for those who strive to understand the deeper meaning of songs, or just for people who can\'t understand a word of what\'s being said.
     </string>
     <string name="about_4">
-           Simply search an artist or album and begin your journey!
+           Simply search an artist and track to begin your journey!
+    </string>
+    <string name="about_5">
+           Unfortunately our API agreement only allows 30% of lyrics to be retrieved. If you would like to learn more visit the MusiXMatch Website.
     </string>
 
     <!-- TODO: Remove or change this placeholder text -->
