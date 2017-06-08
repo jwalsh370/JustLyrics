@@ -22,8 +22,6 @@ import butterknife.ButterKnife;
 
 public class ArtistDetailFragment extends Fragment implements View.OnClickListener {
 
-    private static final int MAX_WIDTH = 400;
-    private static final int MAX_HEIGHT = 300;
 
     @Bind(R.id.artistNameTextView)
     TextView mNameLabel;
@@ -31,8 +29,6 @@ public class ArtistDetailFragment extends Fragment implements View.OnClickListen
     TextView mLyricLabel;
     @Bind(R.id.websiteTextView)
     TextView mWebsiteLabel;
-    @Bind(R.id.artistImageView)
-    ImageView mImageLabel;
     @Bind(R.id.trackTextView) TextView mTrackLabel;
 
     private Artist mArtist;
@@ -56,15 +52,6 @@ public class ArtistDetailFragment extends Fragment implements View.OnClickListen
         View view = inflater.inflate(R.layout.fragment_artist_detail, container, false);
         ButterKnife.bind(this, view);
 
-//        Picasso.with(view.getContext())
-//                .load(mArtist.getImg())
-//                .resize(MAX_WIDTH, MAX_HEIGHT)
-//                .centerCrop()
-//                .into(mImageLabel);
-//
-//
-//        mNameLabel.setText(mArtist.getName());
-//        mTrackLabel.setText(mArtist.getTrack());
         mLyricLabel.setText(mArtist.getLyric());
         mWebsiteLabel.setOnClickListener(this);
         return view;

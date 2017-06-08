@@ -6,10 +6,12 @@ import org.parceler.Parcel;
 public class Artist {
 
     private String mLyric;
+    private String mWebsite;
 
-    public Artist (String lyric){
-
+    public Artist (String lyric, String website){
+        website = "https://developer.musixmatch.com/plans";
         this.mLyric = lyric;
+        this.mWebsite = website;
 
     }
 
@@ -18,6 +20,12 @@ public class Artist {
     public String getLyric() {
         return mLyric;
     }
+
+    public String getWebsite(){
+        return mWebsite;
+    }
+
+
 
 }
 
