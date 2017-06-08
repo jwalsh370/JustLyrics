@@ -9,6 +9,15 @@
     tools:layout_editor_absoluteX="0dp">
 
     <TextView
+        android:id="@+id/artistTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/trackTextView"
+        android:textStyle="italic" />
+
+    <TextView
         android:id="@+id/trackTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

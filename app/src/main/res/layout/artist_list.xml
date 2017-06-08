@@ -28,18 +28,19 @@
             android:layout_below="@+id/trackTextView"
             android:textStyle="italic" />
 
+        <TextView
+            android:id="@+id/lyricTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="Lyrics"
+            android:textColor="@color/colorAccent" />
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="41dp">
 
-            <TextView
-                android:id="@+id/lyricTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:text="Lyrics"
-                android:textColor="@color/colorAccent" />
         </RelativeLayout>
 
 

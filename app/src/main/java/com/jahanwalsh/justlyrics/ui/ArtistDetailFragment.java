@@ -20,7 +20,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class ArtistDetailFragment extends Fragment  {
+public class ArtistDetailFragment extends Fragment  implements View.OnClickListener  {
     @Bind(R.id.artistNameTextView)
     TextView mNameLabel;
     @Bind(R.id.lyricTextView)
@@ -51,17 +51,17 @@ public class ArtistDetailFragment extends Fragment  {
         ButterKnife.bind(this, view);
 
         mLyricLabel.setText(mArtist.getLyric());
-//        mWebsiteLabel.setOnClickListener(this);
+        mWebsiteLabel.setOnClickListener(this);
         return view;
     }
 
-//    @Override
-//    public void onClick(View v) {
-//        if (v == mWebsiteLabel) {
-//            Intent webIntent = new Intent(Intent.ACTION_VIEW,
-//                    Uri.parse(mArtist.getWebsite()));
-//            startActivity(webIntent);
-//        }
-//
-// }
+    @Override
+    public void onClick(View v) {
+        if (v == mWebsiteLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mArtist.getWebsite()));
+            startActivity(webIntent);
+        }
+
+ }
 }
