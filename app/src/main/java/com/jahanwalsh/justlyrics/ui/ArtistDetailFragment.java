@@ -59,11 +59,11 @@ public class ArtistDetailFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-//        if (v == mWebsiteLabel) {
-//            Intent webIntent = new Intent(Intent.ACTION_VIEW,
-//                    Uri.parse(mArtist.getWebsite()));
-//            startActivity(webIntent);
-//        }
+        if (v == mWebsiteLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mArtist.getWebsite()));
+            startActivity(webIntent);
+        }
 
  }
 }
