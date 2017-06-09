@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 
 public class ArtistListActivity extends AppCompatActivity {
     public static final String TAG = ArtistListActivity.class.getSimpleName();
-    @Bind(R.id.artistTextView) TextView mArtistTextView;
+    @Bind(R.id.artistNameTextView) TextView mArtistTextView;
     @Bind(R.id.trackTextView) TextView mTrackTextView;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private ArtistListAdapter mAdapter;
@@ -82,4 +82,6 @@ public class ArtistListActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

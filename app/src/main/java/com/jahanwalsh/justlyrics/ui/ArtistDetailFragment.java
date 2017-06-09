@@ -72,10 +72,10 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
 
 
         if (v == mSaveArtistButton) {
-            DatabaseReference restaurantRef = FirebaseDatabase
+            DatabaseReference artistRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_ARTISTS);
-            restaurantRef.push().setValue(mArtist);
+            artistRef.push().setValue(mArtist);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 
          }

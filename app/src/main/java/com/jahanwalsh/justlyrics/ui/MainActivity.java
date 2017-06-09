@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mTrackEditText.setError("This field is Required!");
             } else {
 
-                Intent intent = new Intent(MainActivity.this, ArtistDetailFragment.class);
+                Intent intent = new Intent(MainActivity.this, ArtistListActivity.class);
                 intent.putExtra("artist", artist);
                 intent.putExtra("track", track);
                 startActivity(intent);

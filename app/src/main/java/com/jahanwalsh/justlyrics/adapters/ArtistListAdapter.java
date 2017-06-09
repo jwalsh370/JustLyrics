@@ -7,9 +7,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
@@ -22,9 +27,14 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static java.security.AccessController.getContext;
 
 
 public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> {
+    @Bind(R.id.saveArtistButton)
+    Button mSaveArtistButton;
+
+    private Artist mArtist;
     
 
     private ArrayList<Artist> mArtists = new ArrayList<>();
@@ -79,11 +89,17 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
         public void onClick(View v) {
             Log.d("click listener", "working");
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, ArtistDetailActivity.class);
-            intent.putExtra("position", itemPosition);
-            intent.putExtra("artists", Parcels.wrap(mArtists));
-            mContext.startActivity(intent);
+//            Intent intent = new Intent(mContext, ArtistDetailActivity.class);
+//            intent.putExtra("position", itemPosition);
+//            intent.putExtra("artists", Parcels.wrap(mArtists));
+//            mContext.startActivity(intent);
+            Artist artist = mArtists.get(itemPosition);
+            Log.i("TestArtist", artist.getLyric());
+
+
+
+            }
         }
 
     }
-}
+
