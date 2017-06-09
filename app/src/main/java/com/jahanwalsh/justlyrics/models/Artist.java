@@ -5,8 +5,9 @@ import org.parceler.Parcel;
 @Parcel
 public class Artist {
 
-   String lyric;
+    String lyric;
     String website;
+    private String pushId;
 
     public Artist (String lyric, String website){
         this.lyric = lyric;
@@ -22,6 +23,14 @@ public class Artist {
 
     public String getWebsite(){
         return website;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId){
+        this.pushId = pushId;
     }
 
 

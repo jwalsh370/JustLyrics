@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jahanwalsh.justlyrics.Constants;
@@ -72,12 +74,20 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
 
 
         if (v == mSaveArtistButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
             DatabaseReference artistRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_ARTISTS);
-            artistRef.push().setValue(mArtist);
-            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                    .getReference(Constants.FIREBASE_CHILD_ARTISTS)
+                    .child(uid);
 
-         }
+            DatabaseReference pushRef = artistRef.push();
+            String pushId = pushRef.getKey();
+            mArtist.setPushId(pushId);
+            pushRef.setValue(mArtist);
+
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
     }
 }

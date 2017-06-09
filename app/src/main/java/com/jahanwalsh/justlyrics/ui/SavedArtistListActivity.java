@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jahanwalsh.justlyrics.Constants;
@@ -27,9 +29,18 @@ public class SavedArtistListActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-
             setContentView(R.layout.artist_activity);
             ButterKnife.bind(this);
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
+            mArtistReference = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_ARTISTS)
+                    .child(uid);
+
+            setUpFirebaseAdapter();
 
             mArtistReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_ARTISTS);
             setUpFirebaseAdapter();

@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.jahanwalsh.justlyrics.ui.CreateAccountActivity">
 
-    <TextView
-        android:layout_width="224dp"
-        android:layout_height="43dp"
-        android:text="Create Account"
-        android:textColor="@color/colorPrimary"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_above="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="68dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
