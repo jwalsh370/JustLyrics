@@ -21,6 +21,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     @Bind(R.id.urlButton)
     Button mUrlButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         ButterKnife.bind(this);
 
         mBackButton.setOnClickListener(this);
+        mUrlButton.setOnClickListener(this);
     }
 
 
