@@ -91,3 +91,4 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
         }
     }
 }
+

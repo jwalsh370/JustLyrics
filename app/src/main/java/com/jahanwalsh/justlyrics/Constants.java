@@ -10,4 +10,6 @@ public class Constants {
 
     public static final String FIREBASE_CHILD_SEARCHED_ARTIST= "searchedArtist";
     public static final String FIREBASE_CHILD_ARTISTS = "artists";
+
+    public static final String PROJECT_URL = "https://developer.musixmatch.com";
 }

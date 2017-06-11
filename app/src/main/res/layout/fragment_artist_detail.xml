@@ -85,12 +85,12 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/saveArtistButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save Artist"
-                android:id="@+id/saveArtistButton"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent"
+                android:text="Save Artist"
                 android:textColor="@color/colorTextIcons"
                 android:textSize="15sp" />
         </RelativeLayout>
