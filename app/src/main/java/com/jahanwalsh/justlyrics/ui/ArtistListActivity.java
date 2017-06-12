@@ -2,10 +2,13 @@ package com.jahanwalsh.justlyrics.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.TextView;
 
 import okhttp3.Call;
@@ -52,7 +55,9 @@ public class ArtistListActivity extends AppCompatActivity {
         getArtists(name, track);
     }
 
+
     private void getArtists(String name, String track) {
+
         final ArtistService artistService = new ArtistService();
 
         artistService.findArtist(name, track, new Callback() {

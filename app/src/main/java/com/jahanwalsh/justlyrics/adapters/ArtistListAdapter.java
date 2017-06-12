@@ -33,8 +33,8 @@ import static java.security.AccessController.getContext;
 
 
 public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> {
-    @Bind(R.id.saveArtistButton)
-    Button mSaveArtistButton;
+//    @Bind(R.id.saveArtistButton)
+//    Button mSaveArtistButton;
 
 
 
@@ -45,6 +45,7 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
         mContext = context;
         mArtists = artists;
     }
+
 
     @Override
     public ArtistListAdapter.ArtistViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -89,15 +90,17 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
         @Override
         public void onClick(View v) {
             Log.d("click listener", "working");
+
             int itemPosition = getLayoutPosition();
 
 
             Intent intent = new Intent(mContext, ArtistDetailActivity.class);
-            intent.putExtra("position", itemPosition);
-            intent.putExtra("artist", Parcels.wrap(mArtists));
+            intent.putExtra("position", itemPosition + "");
+
+            intent.putExtra("artists", Parcels.wrap(mArtists));
+
             mContext.startActivity(intent);
-            Artist artist = mArtists.get(itemPosition);
-            Log.i("TestArtist", artist.getLyric());
+
 
 
 

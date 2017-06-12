@@ -30,7 +30,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private DatabaseReference mSearchedArtistReference;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -46,26 +45,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mSearchedArtistReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_SEARCHED_ARTIST);
-
-        mSearchedArtistReferenceListener = mSearchedArtistReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot artistSnapshot : dataSnapshot.getChildren()) {
-                    String artist = artistSnapshot.getValue().toString();
-                    Log.d("artist updated", "artist: " + artist);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-
-        });
+//        mSearchedArtistReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference()
+//                .child(Constants.FIREBASE_CHILD_SEARCHED_ARTIST);
+//
+//        mSearchedArtistReferenceListener = mSearchedArtistReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot artistSnapshot : dataSnapshot.getChildren()) {
+//                    String artist = artistSnapshot.getValue().toString();
+//                    Log.d("artist updated", "artist: " + artist);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//
+//        });
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -138,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String artist = mArtistEditText.getText().toString();
             String track = mTrackEditText.getText().toString();
 
-            saveArtistToFirebase(artist);
+//            saveArtistToFirebase(artist);
 
             if (artist.length() == 0)  {
                 mArtistEditText.setError("This field is Required!");
@@ -167,15 +166,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void saveArtistToFirebase(String artist) {
-        mSearchedArtistReference.push().setValue(artist);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mSearchedArtistReference.removeEventListener(mSearchedArtistReferenceListener);
-    }
+//    public void saveArtistToFirebase(String artist) {
+//        mSearchedArtistReference.push().setValue(artist);
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mSearchedArtistReference.removeEventListener(mSearchedArtistReferenceListener);
+//    }
 
 
 }

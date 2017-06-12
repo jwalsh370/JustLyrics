@@ -56,7 +56,7 @@ public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements
 
                     Intent intent = new Intent(mContext, ArtistDetailActivity.class);
                     intent.putExtra("position", itemPosition + "");
-                    intent.putExtra("restaurants", Parcels.wrap(artists));
+                    intent.putExtra("artists", Parcels.wrap(artists));
 
                     mContext.startActivity(intent);
                 }

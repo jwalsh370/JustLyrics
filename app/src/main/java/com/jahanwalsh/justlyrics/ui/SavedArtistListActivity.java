@@ -29,6 +29,7 @@ public class SavedArtistListActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
             setContentView(R.layout.fragment_artist_detail);
             ButterKnife.bind(this);
 
@@ -42,8 +43,6 @@ public class SavedArtistListActivity extends AppCompatActivity {
 
             setUpFirebaseAdapter();
 
-            mArtistReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_ARTISTS);
-            setUpFirebaseAdapter();
         }
 
         private void setUpFirebaseAdapter() {
