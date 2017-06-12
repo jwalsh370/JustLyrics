@@ -28,13 +28,9 @@ import butterknife.ButterKnife;
 
 
 public class ArtistDetailFragment extends Fragment  implements View.OnClickListener  {
-    @Bind(R.id.artistNameTextView)
-    TextView mNameLabel;
     @Bind(R.id.lyricTextView)
     TextView mLyricLabel;
-    @Bind(R.id.websiteTextView)
-    TextView mWebsiteLabel;
-    @Bind(R.id.trackTextView) TextView mTrackLabel;
+
     @Bind(R.id.saveArtistButton)
     Button mSaveArtistButton;
 
@@ -52,6 +48,9 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mArtist = Parcels.unwrap(getArguments().getParcelable("artist"));
+
+
+
     }
 
     @Override

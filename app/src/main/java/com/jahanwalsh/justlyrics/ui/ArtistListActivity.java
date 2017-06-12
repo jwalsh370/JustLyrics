@@ -51,8 +51,7 @@ public class ArtistListActivity extends AppCompatActivity {
     @Bind(R.id.artistNameTextView) TextView mArtistTextView;
     @Bind(R.id.trackTextView) TextView mTrackTextView;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    @Bind(R.id.saveArtistButton)
-    Button mSaveArtistButton;
+
     private ArtistListAdapter mAdapter;
 
     public ArrayList<Artist> mArtists = new ArrayList<>();
@@ -66,8 +65,8 @@ public class ArtistListActivity extends AppCompatActivity {
         String name = intent.getStringExtra("artist");
         String track = intent.getStringExtra("track");
 
-        mArtistTextView.setText("Artist: " + name);
-        mTrackTextView.setText("Song : " + track);
+        mArtistTextView.setText("Hey! Your artist " + name + " is just a click away!");
+        mTrackTextView.setText("The lyrics for " + track + " are loading... click in the center of the page to continue. ");
 
 
         getArtists(name, track);
@@ -86,26 +85,7 @@ public class ArtistListActivity extends AppCompatActivity {
 
     }
 
-    public void onClick(View v) {
-        if (v == mSaveArtistButton) {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String uid = user.getUid();
 
-            DatabaseReference artistRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_ARTISTS)
-                    .child(uid);
-
-            DatabaseReference pushRef = artistRef.push();
-            String pushId = pushRef.getKey();
-            mArtist.setPushId(pushId);
-            pushRef.setValue(mArtist);
-
-            mSaveArtistButton.setOnClickListener((View.OnClickListener) this);
-
-            Toast.makeText(ArtistListActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 
     private void getArtists(String name, String track) {

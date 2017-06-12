@@ -8,8 +8,8 @@
 
 
     <LinearLayout
-        android:layout_width="404dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="577dp"
         android:background="#ffffff"
         android:baselineAligned="false"
         android:orientation="vertical"
@@ -17,21 +17,22 @@
         android:weightSum="1">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="387dp"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="10dp">
+            android:layout_width="382dp"
+            android:layout_height="564dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
 
             <TextView
                 android:id="@+id/lyricTextView"
-                android:layout_width="201dp"
-                android:layout_height="442dp"
+                android:layout_width="179dp"
+                android:layout_height="66dp"
+                android:layout_marginLeft="102dp"
+                android:layout_marginTop="249dp"
+                android:text="                Click Here!"
                 android:textColor="@color/colorAccent"
-                tools:layout_editor_absoluteX="80dp"
-                tools:layout_editor_absoluteY="41dp" />
-
-
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
 
 

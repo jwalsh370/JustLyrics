@@ -70,6 +70,7 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
         @Bind(R.id.lyricTextView)
         TextView mLyricTextView;
 
+
         private Context mContext;
 
         public ArtistViewHolder(View itemView) {
@@ -84,7 +85,7 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
 
         public void bindArtist(Artist artist) {
 
-            mLyricTextView.setText(artist.getLyric());
+//            mLyricTextView.setText(artist.getLyric());
         }
 
         @Override
