@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +41,7 @@ public class SavedArtistListActivity extends AppCompatActivity {
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_ARTISTS)
                     .child(uid);
+            Toast.makeText(SavedArtistListActivity.this, "Scroll Down for more Lyrics!", Toast.LENGTH_LONG).show();
 
             setUpFirebaseAdapter();
 

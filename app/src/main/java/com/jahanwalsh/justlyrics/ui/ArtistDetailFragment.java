@@ -82,6 +82,7 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
 
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
+
     }
 }
 
