@@ -59,6 +59,7 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
         ButterKnife.bind(this, view);
 
         mLyricLabel.setText(mArtist.getLyric());
+        mSaveArtistButton.setOnClickListener(this);
         return view;
     }
 

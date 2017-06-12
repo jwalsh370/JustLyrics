@@ -1,41 +1,51 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.jahanwalsh.justlyrics.ui.ArtistDetailFragment">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="601dp">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="402dp"
+        android:layout_height="548dp">
 
 
         <TextView
             android:id="@+id/lyricTextView"
-            android:layout_width="355dp"
-            android:layout_height="296dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="22dp"
-            android:layout_marginTop="121dp"
-            android:layout_weight="0.61"
+            android:layout_width="398dp"
+            android:layout_height="468dp"
             android:textColor="@color/colorAccent"
-            tools:layout_editor_absoluteX="80dp"
-            tools:layout_editor_absoluteY="80dp" />
+            tools:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="parent"
+            tools:layout_constraintBaseline_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp" />
 
         <Button
             android:id="@+id/saveArtistButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:text="Save Artist"
             android:textColor="@color/colorTextIcons"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp" />
 
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
 
 </FrameLayout>
