@@ -4,11 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +13,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity">
-
         </activity>
         <activity android:name=".ui.ArtistListActivity">
             <meta-data
@@ -28,12 +22,7 @@
         <activity
             android:name=".ui.AboutActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
-
-        <activity
-            android:name=".ui.ArtistDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.ArtistDetailActivity"/>
         <activity android:name=".ui.SavedArtistListActivity" />
         <activity android:name=".ui.CreateAccountActivity" />
         <activity android:name=".ui.LoginActivity">
@@ -43,5 +32,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

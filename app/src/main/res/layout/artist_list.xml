@@ -12,38 +12,53 @@
         android:padding="10dp"
         android:weightSum="1">
 
-        <TextView
-            android:id="@+id/artistNameTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/trackTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/lyricTextView"
-            android:layout_width="327dp"
-            android:layout_height="0dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/colorAccent" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="146dp"
             android:layout_weight="1.00">
 
+            <Button
+                android:id="@+id/saveArtistButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/lyricTextView"
+                android:layout_marginStart="46dp"
+                android:background="@color/colorAccent"
+                android:text="Save Artist"
+                android:textColor="@color/colorTextIcons"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/lyricTextView"
+                android:layout_width="287dp"
+                android:layout_height="288dp"
+                android:layout_above="@+id/saveArtistButton"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="41dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/trackTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/lyricTextView"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="32dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/artistNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/trackTextView"
+                android:layout_alignParentStart="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
         </RelativeLayout>
-
-
 
 
     </LinearLayout>

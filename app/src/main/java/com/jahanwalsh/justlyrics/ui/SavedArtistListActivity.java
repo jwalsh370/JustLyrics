@@ -29,7 +29,7 @@ public class SavedArtistListActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.artist_activity);
+            setContentView(R.layout.fragment_artist_detail);
             ButterKnife.bind(this);
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

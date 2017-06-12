@@ -60,18 +60,11 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
         ButterKnife.bind(this, view);
 
         mLyricLabel.setText(mArtist.getLyric());
-        mWebsiteLabel.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        if (v == mWebsiteLabel) {
-            Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(mArtist.getWebsite()));
-            startActivity(webIntent);
-        }
-
 
         if (v == mSaveArtistButton) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
