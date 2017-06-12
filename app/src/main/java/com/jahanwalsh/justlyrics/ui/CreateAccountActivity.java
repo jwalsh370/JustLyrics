@@ -2,6 +2,7 @@ package com.jahanwalsh.justlyrics.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,6 +50,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
         createAuthStateListener();
         createAuthProgressDialog();
+
+        Typeface streets = Typeface.createFromAsset(getAssets(), "fonts/streets.ttf");
+        mCreateUserButton.setTypeface(streets);
+        mPasswordEditText.setTypeface(streets);
+        mEmailEditText.setTypeface(streets);
+        mNameEditText.setTypeface(streets);
+        mConfirmPasswordEditText.setTypeface(streets);
+        mLoginTextView.setTypeface(streets);
 
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);

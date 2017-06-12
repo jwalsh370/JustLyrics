@@ -2,6 +2,7 @@ package com.jahanwalsh.justlyrics.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,6 +44,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
+
+        Typeface streets = Typeface.createFromAsset(getAssets(), "fonts/streets.ttf");
+        mRegisterTextView.setTypeface(streets);
+        mPasswordEditText.setTypeface(streets);
+        mEmailEditText.setTypeface(streets);
+        mPasswordLoginButton.setTypeface(streets);
+
+
+
 
         mRegisterTextView.setOnClickListener(this);
         mPasswordLoginButton.setOnClickListener(this);

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,6 +17,7 @@ import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
+import com.jahanwalsh.justlyrics.ui.MainActivity;
 
 import org.parceler.Parcels;
 
@@ -55,10 +57,12 @@ public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements
                     int itemPosition = getLayoutPosition();
 
                     Intent intent = new Intent(mContext, ArtistDetailActivity.class);
-                    intent.putExtra("position", itemPosition + "");
+                    intent.putExtra("position", itemPosition);
                     intent.putExtra("artists", Parcels.wrap(artists));
 
+
                     mContext.startActivity(intent);
+//                    Toast.makeText(FirebaseArtistViewHolder.this, "Scroll Down for more Lyrics!", Toast.LENGTH_LONG).show();
                 }
 
                 @Override

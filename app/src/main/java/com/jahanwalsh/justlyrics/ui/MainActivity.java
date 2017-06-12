@@ -93,6 +93,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Typeface streets = Typeface.createFromAsset(getAssets(), "fonts/streets.ttf");
         mAppNameTextView.setTypeface(streets);
+        mButton.setTypeface(streets);
+        mAboutButton.setTypeface(streets);
+        mArtistEditText.setTypeface(streets);
+        mTrackEditText.setTypeface(streets);
+        mSavedArtistsButton.setTypeface(streets);
+
+
 
         mButton.setOnClickListener(this);
         mAboutButton.setOnClickListener(this);
@@ -165,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("artist", artist);
                 intent.putExtra("track", track);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "Searching for your song...", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Searching for your song...", Toast.LENGTH_SHORT).show();
             }
 
         }

@@ -2,6 +2,7 @@ package com.jahanwalsh.justlyrics.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -68,6 +69,9 @@ public class ArtistListActivity extends AppCompatActivity {
         mArtistTextView.setText("Hey! Your artist " + name + " is just a click away!");
         mTrackTextView.setText("The lyrics for " + track + " are loading... click in the center of the page to continue. ");
 
+        Typeface streets = Typeface.createFromAsset(getAssets(), "fonts/streets.ttf");
+        mArtistTextView.setTypeface(streets);
+        mTrackTextView.setTypeface(streets);
 
         getArtists(name, track);
 
