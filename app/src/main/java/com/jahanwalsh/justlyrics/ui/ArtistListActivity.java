@@ -72,6 +72,8 @@ public class ArtistListActivity extends AppCompatActivity {
 
         getArtists(name, track);
 
+
+
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         mRecentArtist = mSharedPreferences.getString(Constants.PREFERENCES_ARTIST_KEY, "");
@@ -98,6 +100,8 @@ public class ArtistListActivity extends AppCompatActivity {
             String pushId = pushRef.getKey();
             mArtist.setPushId(pushId);
             pushRef.setValue(mArtist);
+
+            mSaveArtistButton.setOnClickListener((View.OnClickListener) this);
 
             Toast.makeText(ArtistListActivity.this, "Saved", Toast.LENGTH_SHORT).show();
         }

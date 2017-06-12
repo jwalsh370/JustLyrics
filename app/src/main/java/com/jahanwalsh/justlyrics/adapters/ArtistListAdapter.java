@@ -20,7 +20,7 @@ import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -33,8 +33,8 @@ import static java.security.AccessController.getContext;
 
 
 public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> {
-//    @Bind(R.id.saveArtistButton)
-//    Button mSaveArtistButton;
+    @Bind(R.id.saveArtistButton)
+    Button mSaveArtistButton;
 
 
 
