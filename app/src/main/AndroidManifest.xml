@@ -22,8 +22,17 @@
         <activity
             android:name=".ui.AboutActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.ArtistDetailActivity"/>
-        <activity android:name=".ui.SavedArtistListActivity" />
+        <activity android:name=".ui.ArtistDetailActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".ui.MainActivity" />
+        </activity>
+        <activity android:name=".ui.SavedArtistListActivity">
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".ui.MainActivity" />
+        </activity>
         <activity android:name=".ui.CreateAccountActivity" />
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
