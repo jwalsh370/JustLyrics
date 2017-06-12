@@ -9,7 +9,11 @@ public class Constants {
     public static final String API_TRACK_QUERY_PARAMETER= "q_track";
 
     public static final String FIREBASE_CHILD_SEARCHED_ARTIST= "searchedArtist";
+
     public static final String FIREBASE_CHILD_ARTISTS = "artists";
 
     public static final String PROJECT_URL = "https://developer.musixmatch.com";
+
+    public static final String PREFERENCES_ARTIST_KEY = "artist";
+
 }

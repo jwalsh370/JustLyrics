@@ -2,6 +2,8 @@ package com.jahanwalsh.justlyrics.ui;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +34,9 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private DatabaseReference mSearchedArtistReference;
 
     private ValueEventListener mSearchedArtistReferenceListener;
 
@@ -45,30 +50,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        mSearchedArtistReference = FirebaseDatabase
-//                .getInstance()
-//                .getReference()
-//                .child(Constants.FIREBASE_CHILD_SEARCHED_ARTIST);
-//
-//        mSearchedArtistReferenceListener = mSearchedArtistReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot artistSnapshot : dataSnapshot.getChildren()) {
-//                    String artist = artistSnapshot.getValue().toString();
-//                    Log.d("artist updated", "artist: " + artist);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//
-//        });
+        mSearchedArtistReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_ARTIST);
+
+        mSearchedArtistReferenceListener = mSearchedArtistReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot artistSnapshot : dataSnapshot.getChildren()) {
+                    String artist = artistSnapshot.getValue().toString();
+                    Log.d("artist updated", "artist: " + artist);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -88,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mButton.setOnClickListener(this);
         mAboutButton.setOnClickListener(this);
-        mSavedArtistsButton.setOnClickListener(this);
+
 
     }
 
@@ -135,7 +143,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mButton) {
             String artist = mArtistEditText.getText().toString();
+            addToSharedPreferences(artist);
+            if(!(artist).equals("")) {
+                addToSharedPreferences(artist);
+            }
+
             String track = mTrackEditText.getText().toString();
+
 
 //            saveArtistToFirebase(artist);
 
@@ -166,15 +180,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-//    public void saveArtistToFirebase(String artist) {
-//        mSearchedArtistReference.push().setValue(artist);
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mSearchedArtistReference.removeEventListener(mSearchedArtistReferenceListener);
-//    }
+    private void addToSharedPreferences(String location) {
+        mEditor.putString(Constants.PREFERENCES_ARTIST_KEY, location).apply();
+    }
+
+    public void saveArtistToFirebase(String artist) {
+        mSearchedArtistReference.push().setValue(artist);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedArtistReference.removeEventListener(mSearchedArtistReferenceListener);
+    }
 
 
 }
