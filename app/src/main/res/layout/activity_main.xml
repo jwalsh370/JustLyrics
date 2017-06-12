@@ -68,7 +68,7 @@
     <Button
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:text="My Saved Artists"
+        android:text="Lyrics Snapshots"
         android:id="@+id/savedArtistsButton"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"

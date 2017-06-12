@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mButton.setOnClickListener(this);
         mAboutButton.setOnClickListener(this);
+        mSavedArtistsButton.setOnClickListener(this);
+
 
 
     }
