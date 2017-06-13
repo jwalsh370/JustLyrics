@@ -13,7 +13,7 @@ public class Artist {
 
     public Artist (String lyric, String albumArt, String name, String track){
         this.lyric = lyric;
-        this.albumArt = albumArt;
+        this.albumArt = getLargeImageUrl(albumArt);
         this.name = name;
         this.track = track;
 
@@ -29,6 +29,7 @@ public class Artist {
         return albumArt;
     }
 
+
     public String getName() {
         return name;
     }
@@ -42,7 +43,13 @@ public class Artist {
     }
 
     public void setPushId(String pushId){
+
         this.pushId = pushId;
+    }
+
+    public String getLargeImageUrl(String albumArt) {
+        String largeImageUrl = albumArt.substring(0, albumArt.length() - 6).concat("o.jpg");
+        return largeImageUrl;
     }
 
 

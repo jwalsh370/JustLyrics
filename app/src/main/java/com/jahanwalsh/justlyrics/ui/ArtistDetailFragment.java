@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
+import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -28,8 +29,17 @@ import butterknife.ButterKnife;
 
 
 public class ArtistDetailFragment extends Fragment  implements View.OnClickListener  {
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
+
     @Bind(R.id.lyricTextView)
     TextView mLyricLabel;
+    @Bind(R.id.artistNameTextView)
+    TextView mNameLabel;
+    @Bind(R.id.trackTextView)
+    TextView mTrackLabel;
+    @Bind(R.id.albumImageView)
+    ImageView mImgLabel;
 
     @Bind(R.id.saveArtistButton)
     Button mSaveArtistButton;
@@ -58,7 +68,18 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
         View view = inflater.inflate(R.layout.fragment_artist_detail, container, false);
         ButterKnife.bind(this, view);
 
+        Picasso.with(view.getContext())
+                .load(mArtist.getAlbumArt())
+                .resize(MAX_WIDTH, MAX_HEIGHT)
+                .centerCrop()
+                .into(mImgLabel);
+
+
         mLyricLabel.setText(mArtist.getLyric());
+        mNameLabel.setText(mArtist.getName());
+        mTrackLabel.setText(mArtist.getTrack());
+
+
         mSaveArtistButton.setOnClickListener(this);
         return view;
     }

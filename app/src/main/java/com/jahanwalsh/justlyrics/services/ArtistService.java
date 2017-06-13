@@ -19,9 +19,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by jahanwalsh on 6/13/17.
- */
 
 public class ArtistService {
 
@@ -64,8 +61,9 @@ public class ArtistService {
                     String name = artistJSON.getString("artist_name");
                     String track = artistJSON.getString("track_name");
                     String albumArt = artistJSON.getString("album_coverart_350x350");
+                    String lyric = artistJSON.getString("lyrics_body");
 
-                    Artist artist = new Artist(name, track, albumArt, null);
+                    Artist artist = new Artist(name, track, albumArt, lyric);
                     artists.add(artist);
                     Log.v("ARTISTJSON", "LOG AT END OF FOR LOOP processResults(artist) in Service");
 

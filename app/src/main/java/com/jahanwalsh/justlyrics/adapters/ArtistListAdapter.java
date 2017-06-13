@@ -20,6 +20,7 @@ import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
+import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -33,6 +34,9 @@ import static java.security.AccessController.getContext;
 
 
 public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> {
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
+
     @Bind(R.id.saveArtistButton)
     Button mSaveArtistButton;
 
@@ -69,6 +73,12 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
     public class ArtistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.lyricTextView)
         TextView mLyricTextView;
+        @Bind(R.id.albumImageView)
+        ImageView mAlbumImageView;
+        @Bind(R.id.artistNameTextView)
+        TextView mNameTextView;
+        @Bind(R.id.trackTextView)
+        TextView mTrackTextView;
 
 
         private Context mContext;
@@ -84,8 +94,9 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
 
 
         public void bindArtist(Artist artist) {
-
-//            mLyricTextView.setText(artist.getLyric());
+            Picasso.with(mContext).load(artist.getAlbumArt()).into(mAlbumImageView);
+            mNameTextView.setText(artist.getName());
+            mTrackTextView.setText(artist.getTrack());
         }
 
         @Override

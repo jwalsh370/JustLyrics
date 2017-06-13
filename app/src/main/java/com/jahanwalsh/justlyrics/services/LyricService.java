@@ -54,14 +54,17 @@ public class LyricService {
                 Log.v("TEST", "processResults() in Service");
                 Log.d("lyricsTest", jsonData);
                 JSONObject musicJSON = new JSONObject(jsonData);
-                JSONObject artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body");
+                JSONArray artistsJSON = musicJSON.getJSONObject("message").getJSONArray("body");
 
                 for (int i = 0; i < artistsJSON.length(); i++) {
 
-                    JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
+                    JSONObject artistJSON = artistsJSON.getJSONObject(i);
                     String lyric = artistJSON.getString("lyrics_body");
+                    String name = artistJSON.getString("artist_name");
+                    String track = artistJSON.getString("track_name");
+                    String albumArt = artistJSON.getString("album_coverart_350x350");
 
-                    Artist artist = new Artist(lyric, null, null, null);
+                    Artist artist = new Artist(lyric, name, track, albumArt);
                     lyrics.add(artist);
                     Log.v("JSON2Lyrics", "LOG AT END OF FOR LOOP processResults() in Service");
 
