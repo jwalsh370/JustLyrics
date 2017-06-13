@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
+import com.jahanwalsh.justlyrics.models.Lyric;
 import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Picasso;
 
@@ -45,6 +46,7 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
     Button mSaveArtistButton;
 
     private Artist mArtist;
+    private Lyric mLyrics;
 
     public static ArtistDetailFragment newInstance(Artist artist) {
         ArtistDetailFragment artistDetailFragment = new ArtistDetailFragment();
@@ -75,7 +77,7 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
                 .into(mImgLabel);
 
 
-        mLyricLabel.setText(mArtist.getLyric());
+        mLyricLabel.setText(mLyrics.getLyric());
         mNameLabel.setText(mArtist.getName());
         mTrackLabel.setText(mArtist.getTrack());
 

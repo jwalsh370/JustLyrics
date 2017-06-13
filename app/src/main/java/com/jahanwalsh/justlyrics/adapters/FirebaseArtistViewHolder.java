@@ -37,9 +37,9 @@ public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements
         }
 
         public void bindArtist(Artist artist) {
-            TextView lyricTextView = (TextView) mView.findViewById(R.id.lyricTextView);
+            TextView nameTextView = (TextView) mView.findViewById(R.id.artistNameTextView);
 
-            lyricTextView.setText(artist.getLyric());
+            nameTextView.setText(artist.getName());
         }
 
         @Override

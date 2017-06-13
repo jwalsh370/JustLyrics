@@ -23,7 +23,6 @@ public class ArtistDetailActivity extends AppCompatActivity {
     private ArtistPagerAdapter adapterViewPager;
     ArrayList<Artist> mArtists;
     ArrayList<Artist> mLyrics;
-    ArrayList<Artist> mSongs;
 
 
 

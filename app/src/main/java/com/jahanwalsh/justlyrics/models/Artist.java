@@ -5,14 +5,12 @@ import org.parceler.Parcel;
 @Parcel
 public class Artist {
 
-    String lyric;
     private String pushId;
     String albumArt;
     String name;
     String track;
 
-    public Artist (String lyric, String albumArt, String name, String track){
-        this.lyric = lyric;
+    public Artist ( String albumArt, String name, String track){
         this.albumArt = getLargeImageUrl(albumArt);
         this.name = name;
         this.track = track;
@@ -21,9 +19,6 @@ public class Artist {
 
     public Artist() {}
 
-    public String getLyric() {
-        return lyric;
-    }
 
     public String getAlbumArt() {
         return albumArt;

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.models.Artist;
+import com.jahanwalsh.justlyrics.models.Lyric;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,7 +24,7 @@ import okhttp3.Response;
 
 public class LyricService {
 
-    public static void findArtist(String name, String track, Callback callback) {
+    public static void findLyrics(String name, String track, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
@@ -45,8 +46,8 @@ public class LyricService {
         call.enqueue(callback);
     }
 
-    public ArrayList<Artist> processResults(Response response) {
-        ArrayList<Artist> lyrics = new ArrayList<>();
+    public ArrayList<Lyric> processResults(Response response) {
+        ArrayList<Lyric> lyrics = new ArrayList<>();
 
         try {
             String jsonData = response.body().string();
@@ -54,18 +55,16 @@ public class LyricService {
                 Log.v("TEST", "processResults() in Service");
                 Log.d("lyricsTest", jsonData);
                 JSONObject musicJSON = new JSONObject(jsonData);
-                JSONArray artistsJSON = musicJSON.getJSONObject("message").getJSONArray("body");
+                JSONObject artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body");
 
                 for (int i = 0; i < artistsJSON.length(); i++) {
 
-                    JSONObject artistJSON = artistsJSON.getJSONObject(i);
+                    JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
                     String lyric = artistJSON.getString("lyrics_body");
-                    String name = artistJSON.getString("artist_name");
-                    String track = artistJSON.getString("track_name");
-                    String albumArt = artistJSON.getString("album_coverart_350x350");
 
-                    Artist artist = new Artist(lyric, name, track, albumArt);
-                    lyrics.add(artist);
+
+                    Lyric newLyric = new Lyric(lyric);
+                    lyrics.add(newLyric);
                     Log.v("JSON2Lyrics", "LOG AT END OF FOR LOOP processResults() in Service");
 
                 }
