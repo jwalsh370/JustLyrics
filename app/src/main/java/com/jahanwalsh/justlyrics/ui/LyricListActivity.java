@@ -22,6 +22,7 @@ import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.adapters.LyricListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.models.Lyric;
+import com.jahanwalsh.justlyrics.services.ArtistService;
 import com.jahanwalsh.justlyrics.services.LyricService;
 
 
@@ -49,7 +50,7 @@ public class LyricListActivity extends AppCompatActivity {
 
     private LyricListAdapter mAdapter;
 
-    public ArrayList<Lyric> mLyrics = new ArrayList<>();
+    public ArrayList<Artist> mLyrics = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,9 +87,9 @@ public class LyricListActivity extends AppCompatActivity {
 
     private void getLyrics(String name, String track) {
 
-        final LyricService lyricService = new LyricService();
+        final ArtistService artistService = new ArtistService();
 
-        lyricService.findLyrics(name, track, new Callback() {
+        artistService.findArtist(name, track, new Callback() {
 
 
             @Override
@@ -98,7 +99,7 @@ public class LyricListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-                mLyrics = lyricService.processResults(response);
+                mLyrics = artistService.processResults(response);
 
                 LyricListActivity.this.runOnUiThread(new Runnable() {
 

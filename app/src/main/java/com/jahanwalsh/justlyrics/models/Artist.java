@@ -3,17 +3,19 @@ package com.jahanwalsh.justlyrics.models;
 import org.parceler.Parcel;
 
 @Parcel
-public class Artist {
+public class Artist  {
 
     private String pushId;
     String albumArt;
     String name;
     String track;
+    String lyric;
 
-    public Artist ( String albumArt, String name, String track){
+    public Artist ( String albumArt, String name, String track, String lyric){
         this.albumArt = getLargeImageUrl(albumArt);
         this.name = name;
         this.track = track;
+        this.lyric = lyric;
 
     }
 
@@ -40,6 +42,10 @@ public class Artist {
     public void setPushId(String pushId){
 
         this.pushId = pushId;
+    }
+
+    public String getLyric() {
+        return lyric;
     }
 
     public String getLargeImageUrl(String albumArt) {

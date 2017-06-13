@@ -56,14 +56,14 @@ public class ArtistService {
                 JSONArray artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body").getJSONArray("track_list");
 
                 for (int i = 0; i < artistsJSON.length(); i++) {
-                    JSONObject artistJSON = artistsJSON.getJSONObject(0);
+                    JSONObject artistJSON = artistsJSON.getJSONObject(i).getJSONObject("track");
 
                     String name = artistJSON.getString("artist_name");
                     String track = artistJSON.getString("track_name");
                     String albumArt = artistJSON.getString("album_coverart_100x100");
+                    String lyric= "";
 
-
-                    Artist artist = new Artist(name, track, albumArt);
+                    Artist artist = new Artist(name, track, albumArt, lyric);
                     artists.add(artist);
                     Log.v("ARTISTJSON", "LOG AT END OF FOR LOOP processResults(artist) in Service");
 

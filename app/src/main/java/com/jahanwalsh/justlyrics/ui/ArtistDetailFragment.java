@@ -77,7 +77,7 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
                 .into(mImgLabel);
 
 
-        mLyricLabel.setText(mLyrics.getLyric());
+//        mLyricLabel.setText(mLyrics.getLyric());
         mNameLabel.setText(mArtist.getName());
         mTrackLabel.setText(mArtist.getTrack());
 

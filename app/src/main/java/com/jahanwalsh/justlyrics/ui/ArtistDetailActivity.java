@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.adapters.ArtistPagerAdapter;
+import com.jahanwalsh.justlyrics.adapters.LyricPagerAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
+import com.jahanwalsh.justlyrics.models.Lyric;
 
 import org.parceler.Parcels;
 
@@ -21,8 +23,11 @@ import butterknife.ButterKnife;
 public class ArtistDetailActivity extends AppCompatActivity {
     @Bind(R.id.viewPager) ViewPager mViewPager;
     private ArtistPagerAdapter adapterViewPager;
+    @Bind(R.id.lyricViewPager) ViewPager mLyricViewPager;
+    private LyricPagerAdapter lyricAdapterViewPager;
     ArrayList<Artist> mArtists;
-    ArrayList<Artist> mLyrics;
+    ArrayList<Lyric> mLyrics;
+
 
 
 
@@ -38,7 +43,9 @@ public class ArtistDetailActivity extends AppCompatActivity {
 
 
 
-        adapterViewPager = new ArtistPagerAdapter(getSupportFragmentManager(), mLyrics);
+
+
+        lyricAdapterViewPager = new LyricPagerAdapter(getSupportFragmentManager(), mLyrics);
         adapterViewPager = new ArtistPagerAdapter(getSupportFragmentManager(), mArtists);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
