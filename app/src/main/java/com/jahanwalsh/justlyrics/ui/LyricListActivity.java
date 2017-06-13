@@ -50,7 +50,7 @@ public class LyricListActivity extends AppCompatActivity {
 
     private LyricListAdapter mAdapter;
 
-    public ArrayList<Artist> mLyrics = new ArrayList<>();
+    public ArrayList<Lyric> mLyrics = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +87,9 @@ public class LyricListActivity extends AppCompatActivity {
 
     private void getLyrics(String name, String track) {
 
-        final ArtistService artistService = new ArtistService();
+        final LyricService lyricService = new LyricService();
 
-        artistService.findArtist(name, track, new Callback() {
+        lyricService.findLyrics(name, track, new Callback() {
 
 
             @Override
@@ -99,7 +99,7 @@ public class LyricListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-                mLyrics = artistService.processResults(response);
+                mLyrics = lyricService.processResults(response);
 
                 LyricListActivity.this.runOnUiThread(new Runnable() {
 

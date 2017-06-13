@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.models.Lyric;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailFragment;
+import com.jahanwalsh.justlyrics.ui.LyricDetailFragment;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class LyricPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return ArtistDetailFragment.newInstance(mLyrics.get(position));
+        return LyricDetailFragment.newInstance(mLyrics.get(position));
     }
 
     @Override

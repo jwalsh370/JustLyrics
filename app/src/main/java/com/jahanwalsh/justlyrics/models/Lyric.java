@@ -3,10 +3,10 @@ package com.jahanwalsh.justlyrics.models;
 
 import org.parceler.Parcel;
 
+@Parcel
 
 
-
-public abstract class Lyric extends Artist {
+public class Lyric {
     String lyric;
 
     public Lyric( String lyric){
@@ -14,22 +14,11 @@ public abstract class Lyric extends Artist {
         this.lyric = lyric;
     }
 
-    public String getAlbumArt() {
-        return albumArt;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public String getTrack() {
-        return track;
-    }
-
 
     public Lyric() {}
+
     public String getLyric() {
+
         return lyric;
     }
 }

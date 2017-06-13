@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
+import com.jahanwalsh.justlyrics.models.Lyric;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
 import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Picasso;
@@ -40,10 +41,10 @@ public class LyricListAdapter extends RecyclerView.Adapter<LyricListAdapter.Arti
 
 
 
-    private ArrayList<Artist> mLyrics = new ArrayList<>();
+    private ArrayList<Lyric> mLyrics = new ArrayList<>();
     private Context mContext;
 
-    public LyricListAdapter(Context context, ArrayList<Artist> lyrics) {
+    public LyricListAdapter(Context context, ArrayList<Lyric> lyrics) {
         mContext = context;
         mLyrics = lyrics;
     }
@@ -58,7 +59,7 @@ public class LyricListAdapter extends RecyclerView.Adapter<LyricListAdapter.Arti
 
     @Override
     public void onBindViewHolder(LyricListAdapter.ArtistViewHolder holder, int position) {
-        holder.bindArtist(mLyrics.get(position));
+        holder.bindLyric(mLyrics.get(position));
     }
 
     @Override
@@ -87,8 +88,8 @@ public class LyricListAdapter extends RecyclerView.Adapter<LyricListAdapter.Arti
 
 
 
-        public void bindArtist(Artist artist) {
-            mLyricTextView.setText(artist.getLyric());
+        public void bindLyric(Lyric lyric) {
+            mLyricTextView.setText(lyric.getLyric());
         }
 
         @Override

@@ -3,7 +3,7 @@ package com.jahanwalsh.justlyrics.models;
 import org.parceler.Parcel;
 
 @Parcel
-public class Artist  {
+public class Artist extends Lyric  {
 
     private String pushId;
     String albumArt;

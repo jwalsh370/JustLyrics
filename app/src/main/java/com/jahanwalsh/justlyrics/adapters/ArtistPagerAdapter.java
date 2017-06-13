@@ -11,7 +11,7 @@ import com.jahanwalsh.justlyrics.ui.ArtistDetailFragment;
 import java.util.ArrayList;
 
 public class ArtistPagerAdapter extends FragmentPagerAdapter {
-    private ArrayList<Artist> mArtists;
+    public ArrayList<Artist> mArtists;
 
     public ArtistPagerAdapter(FragmentManager fm, ArrayList<Artist> artists) {
         super(fm);

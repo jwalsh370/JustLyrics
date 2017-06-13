@@ -46,8 +46,8 @@ public class LyricService {
         call.enqueue(callback);
     }
 
-    public ArrayList<Artist> processResults(Response response) {
-        ArrayList<Artist> lyrics = new ArrayList<>();
+    public ArrayList<Lyric> processResults(Response response) {
+        ArrayList<Lyric> lyrics = new ArrayList<>();
 
         try {
             String jsonData = response.body().string();
@@ -63,7 +63,7 @@ public class LyricService {
                     String lyric = artistJSON.getString("lyrics_body");
 
 
-                    Artist newLyric = new Artist(lyric, null, null, null);
+                    Lyric newLyric = new Lyric(lyric);
                     lyrics.add(newLyric);
                     Log.v("JSON2Lyrics", "LOG AT END OF FOR LOOP processResults() in Service");
 

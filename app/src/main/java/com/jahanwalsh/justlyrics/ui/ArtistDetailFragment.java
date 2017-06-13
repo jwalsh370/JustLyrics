@@ -33,8 +33,7 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
 
-    @Bind(R.id.lyricTextView)
-    TextView mLyricLabel;
+
     @Bind(R.id.artistNameTextView)
     TextView mNameLabel;
     @Bind(R.id.trackTextView)
@@ -46,7 +45,6 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
     Button mSaveArtistButton;
 
     private Artist mArtist;
-    private Lyric mLyrics;
 
     public static ArtistDetailFragment newInstance(Artist artist) {
         ArtistDetailFragment artistDetailFragment = new ArtistDetailFragment();
@@ -77,7 +75,6 @@ public class ArtistDetailFragment extends Fragment  implements View.OnClickListe
                 .into(mImgLabel);
 
 
-//        mLyricLabel.setText(mLyrics.getLyric());
         mNameLabel.setText(mArtist.getName());
         mTrackLabel.setText(mArtist.getTrack());
 
