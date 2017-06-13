@@ -22,6 +22,9 @@ public class ArtistDetailActivity extends AppCompatActivity {
     @Bind(R.id.viewPager) ViewPager mViewPager;
     private ArtistPagerAdapter adapterViewPager;
     ArrayList<Artist> mArtists;
+    ArrayList<Artist> mLyrics;
+    ArrayList<Artist> mSongs;
+
 
 
     @Override
@@ -29,12 +32,14 @@ public class ArtistDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artist_detail);
         ButterKnife.bind(this);
-//
-//
 
+        mLyrics = Parcels.unwrap(getIntent().getParcelableExtra("lyrics"));
         mArtists = Parcels.unwrap(getIntent().getParcelableExtra("artists"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
+
+
+        adapterViewPager = new ArtistPagerAdapter(getSupportFragmentManager(), mLyrics);
         adapterViewPager = new ArtistPagerAdapter(getSupportFragmentManager(), mArtists);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);

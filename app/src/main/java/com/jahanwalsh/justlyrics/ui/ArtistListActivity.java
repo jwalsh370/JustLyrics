@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import okhttp3.Call;
@@ -20,6 +21,7 @@ import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
+import com.jahanwalsh.justlyrics.services.ArtistService;
 import com.jahanwalsh.justlyrics.services.LyricService;
 
 
@@ -35,16 +37,20 @@ public class ArtistListActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
     private String mRecentArtist;
 
-    private Artist mArtist;
+    public static final String TAG = ArtistListActivity.class.getSimpleName();
 
 
-    @Bind(R.id.artistNameTextView) TextView mArtistTextView;
-    @Bind(R.id.trackTextView) TextView mTrackTextView;
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.artistNameTextView)
+    TextView mArtistTextView;
+    @Bind(R.id.trackTextView)
+    TextView mTrackTextView;
+    @Bind(R.id.recyclerView)
+    RecyclerView mRecyclerView;
 
     private ArtistListAdapter mAdapter;
 
-    public ArrayList<Artist> mArtists = new ArrayList<>();
+    public ArrayList<Artist> mLyrics = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +68,7 @@ public class ArtistListActivity extends AppCompatActivity {
         mArtistTextView.setTypeface(streets);
         mTrackTextView.setTypeface(streets);
 
-        getArtists(name, track);
-
+        getLyrics(name, track);
 
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -71,17 +76,14 @@ public class ArtistListActivity extends AppCompatActivity {
         mRecentArtist = mSharedPreferences.getString(Constants.PREFERENCES_ARTIST_KEY, "");
         Log.d("Shared Pref artist", mRecentArtist);
         if (mRecentArtist != null) {
-            getArtists(mRecentArtist, null);
+            getLyrics(mRecentArtist, null);
         }
-
 
 
     }
 
 
-
-
-    private void getArtists(String name, String track) {
+    private void getLyrics(String name, String track) {
 
         final LyricService lyricService = new LyricService();
 
@@ -95,13 +97,13 @@ public class ArtistListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-                mArtists = lyricService.processResults(response);
+                mLyrics = lyricService.processResults(response);
 
                 ArtistListActivity.this.runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
-                        mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
+                        mAdapter = new ArtistListAdapter(getApplicationContext(), mLyrics);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
                                 new LinearLayoutManager(ArtistListActivity.this);
@@ -109,9 +111,60 @@ public class ArtistListActivity extends AppCompatActivity {
                         mRecyclerView.setHasFixedSize(true);
                     }
                 });
+
+//
             }
         });
     }
 
+    private void getArtist(String name, String track) {
 
+        final ArtistService artistService = new ArtistService();
+
+        artistService.findArtist(name, track, new Callback() {
+
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                final ArrayList<Artist> mArtists = artistService.processResults(response);
+
+                ArtistListActivity.this.runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        String[] artistNames = new String[mArtists.size()];
+                        for (int i = 0; i < artistNames.length; i++) {
+                            artistNames[i] = mArtists.get(i).getName();
+                        }
+
+                        ArrayAdapter adapter = new ArrayAdapter(ArtistListActivity.this,
+                                android.R.layout.simple_list_item_1, artistNames);
+
+                        for (Artist artist : mArtists) {
+                            Log.d(TAG, "Name: " + artist.getName());
+                            Log.d(TAG, "Phone: " + artist.getTrack());
+                            Log.d(TAG, "Website: " + artist.getAlbumArt());
+
+                            mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager =
+                                    new LinearLayoutManager(ArtistListActivity.this);
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
+                        }
+                    }
+
+//
+                });
+            }
+        });
+
+
+    }
 }

@@ -37,7 +37,7 @@ public class ArtistService {
         urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
 
         String url = urlBuilder.build().toString();
-        Log.d("test", url);
+        Log.d("testArtist", url);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -67,7 +67,7 @@ public class ArtistService {
 
                     Artist artist = new Artist(name, track, albumArt, null);
                     artists.add(artist);
-                    Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
+                    Log.v("JSON3", "LOG AT END OF FOR LOOP processResults(artist) in Service");
 
                 }
             }
