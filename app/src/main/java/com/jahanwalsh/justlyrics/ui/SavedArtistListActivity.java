@@ -49,7 +49,7 @@ public class SavedArtistListActivity extends AppCompatActivity {
 
         private void setUpFirebaseAdapter() {
             mFirebaseAdapter = new FirebaseRecyclerAdapter<Artist, FirebaseArtistViewHolder>
-                    (Artist.class, R.layout.artist_list, FirebaseArtistViewHolder.class,
+                    (Artist.class, R.layout.artist_list_item_drag, FirebaseArtistViewHolder.class,
                             mArtistReference) {
 
                 @Override

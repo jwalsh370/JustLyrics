@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JustLyrics</string>
+    <string name="app_name">Just Lyrics</string>
     <string name="title_activity_lyrics">Lyrics</string>
     <string name="aboutButton_text">About</string>
     <string name="about_head">About</string>
