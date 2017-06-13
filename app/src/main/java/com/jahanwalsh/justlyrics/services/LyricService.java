@@ -31,11 +31,11 @@ public class LyricService {
         urlBuilder.addQueryParameter("callback", "callback");
         urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, track);
         urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
-        Log.d("nameTest", "name");
+        Log.d("lyricName", "name");
         urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
 
         String url = urlBuilder.build().toString();
-        Log.d("test", url);
+        Log.d("lyrics", url);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -52,7 +52,7 @@ public class LyricService {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 Log.v("TEST", "processResults() in Service");
-                Log.d("test2", jsonData);
+                Log.d("lyricsTest", jsonData);
                 JSONObject musicJSON = new JSONObject(jsonData);
                 JSONObject artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body");
 
@@ -63,7 +63,7 @@ public class LyricService {
 
                     Artist artist = new Artist(lyric, null, null, null);
                     lyrics.add(artist);
-                    Log.v("JSON2", "LOG AT END OF FOR LOOP processResults() in Service");
+                    Log.v("JSON2Lyrics", "LOG AT END OF FOR LOOP processResults() in Service");
 
                 }
             }

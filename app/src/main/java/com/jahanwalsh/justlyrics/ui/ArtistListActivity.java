@@ -69,6 +69,7 @@ public class ArtistListActivity extends AppCompatActivity {
         mTrackTextView.setTypeface(streets);
 
         getLyrics(name, track);
+        getArtist(name, track);
 
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);

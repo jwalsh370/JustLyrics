@@ -53,8 +53,8 @@ public class ArtistService {
         try {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
-                Log.v("TEST", "processResults() in Service");
-                Log.d("test2", jsonData);
+                Log.v("TESTARTIST", "processResults() in Service");
+                Log.d("ARTISTTEST", jsonData);
                 JSONObject musicJSON = new JSONObject(jsonData);
                 JSONArray artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body").getJSONArray("track_list");
 
@@ -67,7 +67,7 @@ public class ArtistService {
 
                     Artist artist = new Artist(name, track, albumArt, null);
                     artists.add(artist);
-                    Log.v("JSON3", "LOG AT END OF FOR LOOP processResults(artist) in Service");
+                    Log.v("ARTISTJSON", "LOG AT END OF FOR LOOP processResults(artist) in Service");
 
                 }
             }
