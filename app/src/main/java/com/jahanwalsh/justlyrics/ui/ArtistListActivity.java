@@ -9,27 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
-import com.jahanwalsh.justlyrics.services.ArtistService;
+import com.jahanwalsh.justlyrics.services.LyricService;
 
 
 import java.io.IOException;
@@ -37,8 +28,6 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
-import static java.security.AccessController.getContext;
 
 
 public class ArtistListActivity extends AppCompatActivity {
@@ -94,9 +83,9 @@ public class ArtistListActivity extends AppCompatActivity {
 
     private void getArtists(String name, String track) {
 
-        final ArtistService artistService = new ArtistService();
+        final LyricService lyricService = new LyricService();
 
-        artistService.findArtist(name, track, new Callback() {
+        lyricService.findArtist(name, track, new Callback() {
 
 
             @Override
@@ -106,7 +95,7 @@ public class ArtistListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-                mArtists = artistService.processResults(response);
+                mArtists = lyricService.processResults(response);
 
                 ArtistListActivity.this.runOnUiThread(new Runnable() {
 
