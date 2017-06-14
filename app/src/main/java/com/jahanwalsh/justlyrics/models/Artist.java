@@ -6,16 +6,12 @@ import org.parceler.Parcel;
 public class Artist {
 
     String lyric;
+    String website;
     private String pushId;
-    String albumArt;
-    String name;
-    String track;
 
-    public Artist (String lyric, String albumArt, String name, String track){
+    public Artist (String lyric, String website){
         this.lyric = lyric;
-        this.albumArt = albumArt;
-        this.name = name;
-        this.track = track;
+        this.website = website;
 
     }
 
@@ -25,16 +21,8 @@ public class Artist {
         return lyric;
     }
 
-    public String getAlbumArt() {
-        return albumArt;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getTrack() {
-        return track;
+    public String getWebsite(){
+        return website;
     }
 
     public String getPushId() {

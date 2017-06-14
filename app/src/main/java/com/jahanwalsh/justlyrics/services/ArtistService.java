@@ -12,28 +12,26 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import okhttp3.Call;
 import okhttp3.Callback;
+
+import okhttp3.Call;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by jahanwalsh on 6/13/17.
- */
 
 public class ArtistService {
 
     public static void findArtist(String name, String track, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_NEW_URL).newBuilder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter("format", "json");
         urlBuilder.addQueryParameter("callback", "callback");
         urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, track);
         urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
-        urlBuilder.addQueryParameter("quorum_factor", "1");
+        Log.d("nameTest", "name");
         urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
 
         String url = urlBuilder.build().toString();
@@ -56,16 +54,15 @@ public class ArtistService {
                 Log.v("TESTARTIST", "processResults() in Service");
                 Log.d("ARTISTTEST", jsonData);
                 JSONObject musicJSON = new JSONObject(jsonData);
-                JSONArray artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body").getJSONArray("track_list");
+                JSONObject artistsJSON = musicJSON.getJSONObject("message").getJSONObject("body");
 
                 for (int i = 0; i < artistsJSON.length(); i++) {
 
-                    JSONObject artistJSON = artistsJSON.getJSONObject(i);
-                    String name = artistJSON.getString("artist_name");
-                    String track = artistJSON.getString("track_name");
-                    String albumArt = artistJSON.getString("album_coverart_350x350");
+                    JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
+                    String lyric = artistJSON.getString("lyrics_body");
+                    String website = artistJSON.getString("html_tracking_url");
 
-                    Artist artist = new Artist(name, track, albumArt, null);
+                    Artist artist = new Artist(lyric, website);
                     artists.add(artist);
                     Log.v("ARTISTJSON", "LOG AT END OF FOR LOOP processResults(artist) in Service");
 
@@ -82,3 +79,5 @@ public class ArtistService {
 
     }
 }
+
+
