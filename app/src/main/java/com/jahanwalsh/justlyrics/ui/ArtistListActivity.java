@@ -10,12 +10,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.widget.ArrayAdapter;
 =======
+=======
+>>>>>>> parent of 610fc9a... add new service for second api query call
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
+>>>>>>> parent of 610fc9a... add new service for second api query call
+=======
 >>>>>>> parent of 610fc9a... add new service for second api query call
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +41,10 @@ import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.services.ArtistService;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.jahanwalsh.justlyrics.services.LyricService;
+=======
+>>>>>>> parent of 610fc9a... add new service for second api query call
 =======
 >>>>>>> parent of 610fc9a... add new service for second api query call
 
@@ -105,6 +114,13 @@ public class ArtistListActivity extends AppCompatActivity {
 
         final ArtistService artistService = new ArtistService();
 
+<<<<<<< HEAD
+=======
+    private void getArtists(String name, String track) {
+
+        final ArtistService artistService = new ArtistService();
+
+>>>>>>> parent of 610fc9a... add new service for second api query call
         artistService.findArtist(name, track, new Callback() {
 
 
@@ -116,7 +132,11 @@ public class ArtistListActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 mLyrics = lyricService.processResults(response);
+=======
+                mArtists = artistService.processResults(response);
+>>>>>>> parent of 610fc9a... add new service for second api query call
 =======
                 mArtists = artistService.processResults(response);
 >>>>>>> parent of 610fc9a... add new service for second api query call
