@@ -9,54 +9,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import android.widget.ArrayAdapter;
-=======
-=======
->>>>>>> parent of 610fc9a... add new service for second api query call
-=======
->>>>>>> parent of 610fc9a... add new service for second api query call
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.widget.Button;
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 610fc9a... add new service for second api query call
-=======
->>>>>>> parent of 610fc9a... add new service for second api query call
-=======
->>>>>>> parent of 610fc9a... add new service for second api query call
 import android.widget.TextView;
-import android.widget.Toast;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.services.ArtistService;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import com.jahanwalsh.justlyrics.services.LyricService;
-=======
->>>>>>> parent of 610fc9a... add new service for second api query call
-=======
->>>>>>> parent of 610fc9a... add new service for second api query call
-=======
->>>>>>> parent of 610fc9a... add new service for second api query call
-
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,7 +26,6 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static java.security.AccessController.getContext;
 
 
 public class ArtistListActivity extends AppCompatActivity {
@@ -84,7 +45,7 @@ public class ArtistListActivity extends AppCompatActivity {
 
     private ArtistListAdapter mAdapter;
 
-    public ArrayList<Artist> mLyrics = new ArrayList<>();
+    public ArrayList<Artist> mArtists = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +64,6 @@ public class ArtistListActivity extends AppCompatActivity {
         mArtistTextView.setTypeface(streets);
         mTrackTextView.setTypeface(streets);
 
-        getLyrics(name, track);
         getArtist(name, track);
 
 
@@ -112,27 +72,20 @@ public class ArtistListActivity extends AppCompatActivity {
         mRecentArtist = mSharedPreferences.getString(Constants.PREFERENCES_ARTIST_KEY, "");
         Log.d("Shared Pref artist", mRecentArtist);
         if (mRecentArtist != null) {
-            getLyrics(mRecentArtist, null);
+            getArtist(mRecentArtist, null);
         }
 
 
     }
 
 
-    private void getLyrics(String name, String track) {
 
-        final ArtistService artistService = new ArtistService();
 
-<<<<<<< HEAD
-=======
     private void getArtists(String name, String track) {
 
         final ArtistService artistService = new ArtistService();
 
-<<<<<<< HEAD
->>>>>>> parent of 610fc9a... add new service for second api query call
-=======
->>>>>>> parent of 610fc9a... add new service for second api query call
+
         artistService.findArtist(name, track, new Callback() {
 
 
@@ -143,25 +96,15 @@ public class ArtistListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                mLyrics = lyricService.processResults(response);
-=======
+
+
                 mArtists = artistService.processResults(response);
->>>>>>> parent of 610fc9a... add new service for second api query call
-=======
-                mArtists = artistService.processResults(response);
->>>>>>> parent of 610fc9a... add new service for second api query call
-=======
-                mArtists = artistService.processResults(response);
->>>>>>> parent of 610fc9a... add new service for second api query call
 
                 ArtistListActivity.this.runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
-                        mAdapter = new ArtistListAdapter(getApplicationContext(), mLyrics);
+                        mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
                                 new LinearLayoutManager(ArtistListActivity.this);
@@ -196,18 +139,6 @@ public class ArtistListActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        String[] artistNames = new String[mArtists.size()];
-                        for (int i = 0; i < artistNames.length; i++) {
-                            artistNames[i] = mArtists.get(i).getName();
-                        }
-
-                        ArrayAdapter adapter = new ArrayAdapter(ArtistListActivity.this,
-                                android.R.layout.simple_list_item_1, artistNames);
-
-                        for (Artist artist : mArtists) {
-                            Log.d(TAG, "Name: " + artist.getName());
-                            Log.d(TAG, "Phone: " + artist.getTrack());
-                            Log.d(TAG, "Website: " + artist.getAlbumArt());
 
                             mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
                             mRecyclerView.setAdapter(mAdapter);
@@ -216,13 +147,12 @@ public class ArtistListActivity extends AppCompatActivity {
                             mRecyclerView.setLayoutManager(layoutManager);
                             mRecyclerView.setHasFixedSize(true);
                         }
-                    }
+                    });
 
 //
-                });
-            }
-        });
+                }
+            });
+        }
 
 
     }
-}
