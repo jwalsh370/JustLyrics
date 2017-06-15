@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 public class SavedArtistListActivity extends AppCompatActivity implements OnStartDragListener {
 
         private DatabaseReference mArtistReference;
-        private FirebaseRecyclerAdapter mFirebaseAdapter;
+        private FirebaseArtistListAdapter mFirebaseAdapter;
         private ItemTouchHelper mItemTouchHelper;
 
         @Bind(R.id.recyclerView)
@@ -35,7 +35,7 @@ public class SavedArtistListActivity extends AppCompatActivity implements OnStar
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
-            setContentView(R.layout.artist_activity);
+            setContentView(R.layout.activity_artists);
             ButterKnife.bind(this);
 
             setUpFirebaseAdapter();

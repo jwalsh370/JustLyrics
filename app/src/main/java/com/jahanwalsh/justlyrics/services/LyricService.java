@@ -48,9 +48,24 @@ public class LyricService {
             if (response.isSuccessful()) {
                 JSONObject musicJSON = new JSONObject(jsonData);
                 JSONObject bodyJSON = musicJSON.getJSONObject("message").getJSONObject("body");
-                JSONArray albumsJSON = bodyJSON.getJSONArray("track_list");
+                JSONObject albumsJSON = bodyJSON.getJSONObject("track_list");
 
                 Log.d("ALL ALBUMS", albumsJSON.toString());
+
+                for (int i = 0; i < albumsJSON.length(); i++) {
+
+                    JSONObject artistJSON = albumsJSON.getJSONObject("track_list");
+                    String name = artistJSON.getString("artist_name");
+                    String track = artistJSON.getString("track_name");
+                    String img = artistJSON.getString("album_coverart_350x350");
+//                    String lyric = artistJSON.getString("lyrics_body");
+
+
+                    Artist artist = new Artist(name,track, img, null);
+                   lyrics.add(artist);
+                    Log.i("artistreturnedLog", "processResults() in Service");
+                }
+
             }
 
         } catch (IOException e) {

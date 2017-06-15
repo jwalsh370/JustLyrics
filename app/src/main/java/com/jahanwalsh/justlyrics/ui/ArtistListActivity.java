@@ -48,7 +48,7 @@ public class ArtistListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.artist_activity);
+        setContentView(R.layout.activity_artists);
         ButterKnife.bind(this);
 
         Intent intent = getIntent();

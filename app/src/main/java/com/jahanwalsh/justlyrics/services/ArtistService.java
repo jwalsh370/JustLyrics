@@ -56,10 +56,13 @@ public class ArtistService {
 
                     JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
                     String lyric = artistJSON.getString("lyrics_body");
-                    String website = artistJSON.getString("html_tracking_url");
-                    Artist artist = new Artist(lyric, website);
+//                    String name = artistJSON.getString("artist_name");
+//                    String track = artistJSON.getString("track_name");
+//                    String img = artistJSON.getString("album_coverart_350x350");
+                    Artist artist = new Artist(lyric,null, null, null);
                     artists.add(artist);
                 }
+
             }
 
         } catch (IOException e) {

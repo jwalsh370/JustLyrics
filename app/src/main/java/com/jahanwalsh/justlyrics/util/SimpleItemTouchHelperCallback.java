@@ -15,11 +15,13 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public boolean isLongPressDragEnabled() {
+
         return true;
     }
 
     @Override
     public boolean isItemViewSwipeEnabled() {
+
         return true;
     }
 
@@ -44,4 +46,6 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
         mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
     }
+
+
 }
