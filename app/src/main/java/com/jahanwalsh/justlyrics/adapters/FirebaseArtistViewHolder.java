@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,12 +19,18 @@ import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
 import com.jahanwalsh.justlyrics.ui.MainActivity;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
 public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
+
+    public ImageView mAlbumImageView;
 
 
         View mView;
@@ -38,8 +45,21 @@ public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements
 
         public void bindArtist(Artist artist) {
             TextView lyricTextView = (TextView) mView.findViewById(R.id.lyricTextView);
+            mAlbumImageView = (ImageView) mView.findViewById(R.id.albumArtImageView);
+            TextView nameTextView = (TextView) mView.findViewById(R.id.artistNameTextView);
+            TextView trackTextView = (TextView) mView.findViewById(R.id.trackTextView);
+
+//            Picasso.with(mContext)
+////                    .load(artist.getImageUrl())
+//                    .resize(MAX_WIDTH, MAX_HEIGHT)
+//                    .centerCrop()
+//                    .into(mAlbumImageView);
 
             lyricTextView.setText(artist.getLyric());
+//            nameTextView.setText(artist.getName());
+//            trackTextView.setText(artist.gettrack());
+
+
         }
 
         @Override

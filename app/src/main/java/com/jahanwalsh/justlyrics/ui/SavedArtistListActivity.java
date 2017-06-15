@@ -1,10 +1,10 @@
 package com.jahanwalsh.justlyrics.ui;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
+import android.support.v7.widget.helper.ItemTouchHelper;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,16 +13,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
+import com.jahanwalsh.justlyrics.adapters.FirebaseArtistListAdapter;
 import com.jahanwalsh.justlyrics.adapters.FirebaseArtistViewHolder;
 import com.jahanwalsh.justlyrics.models.Artist;
+import com.jahanwalsh.justlyrics.util.OnStartDragListener;
+import com.jahanwalsh.justlyrics.util.SimpleItemTouchHelperCallback;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SavedArtistListActivity extends AppCompatActivity {
+public class SavedArtistListActivity extends AppCompatActivity implements OnStartDragListener {
 
         private DatabaseReference mArtistReference;
         private FirebaseRecyclerAdapter mFirebaseAdapter;
+        private ItemTouchHelper mItemTouchHelper;
 
         @Bind(R.id.recyclerView)
         RecyclerView mRecyclerView;
@@ -34,6 +38,11 @@ public class SavedArtistListActivity extends AppCompatActivity {
             setContentView(R.layout.artist_activity);
             ButterKnife.bind(this);
 
+            setUpFirebaseAdapter();
+        }
+
+        private void setUpFirebaseAdapter() {
+
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
 
@@ -41,31 +50,41 @@ public class SavedArtistListActivity extends AppCompatActivity {
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_ARTISTS)
                     .child(uid);
-            Toast.makeText(SavedArtistListActivity.this, "Scroll Down for more Lyrics!", Toast.LENGTH_LONG).show();
 
-            setUpFirebaseAdapter();
+            mFirebaseAdapter = new FirebaseArtistListAdapter(Artist.class, R.layout.artist_list_item_drag, FirebaseArtistViewHolder.class,
+                            mArtistReference, this, this);
 
-        }
 
-        private void setUpFirebaseAdapter() {
-            mFirebaseAdapter = new FirebaseRecyclerAdapter<Artist, FirebaseArtistViewHolder>
-                    (Artist.class, R.layout.artist_list_item_drag, FirebaseArtistViewHolder.class,
-                            mArtistReference) {
-
-                @Override
-                protected void populateViewHolder(FirebaseArtistViewHolder viewHolder,
-                                                  Artist model, int position) {
-                    viewHolder.bindArtist(model);
-                }
-            };
             mRecyclerView.setHasFixedSize(true);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
             mRecyclerView.setAdapter(mFirebaseAdapter);
+
+            ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
+
+            mItemTouchHelper = new ItemTouchHelper(callback);
+            mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+
+            mFirebaseAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+                @Override
+                public void onItemRangeInserted(int positionStart, int itemCount) {
+                    super.onItemRangeInserted(positionStart, itemCount);
+                    mFirebaseAdapter.notifyDataSetChanged();
+                }
+            });
+
         }
 
         @Override
-        protected void onDestroy() {
+         public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+            mItemTouchHelper.startDrag(viewHolder);
+    }
+
+
+        @Override
+          protected void onDestroy() {
             super.onDestroy();
             mFirebaseAdapter.cleanup();
         }
+
+
     }

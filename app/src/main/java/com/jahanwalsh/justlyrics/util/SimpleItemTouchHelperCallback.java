@@ -1,18 +1,15 @@
 package com.jahanwalsh.justlyrics.util;
 
-import android.content.ClipData;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-/**
- * Created by jahanwalsh on 6/13/17.
- */
 
-public class SimpleItemToucHelperCallback extends ItemTouchHelper.Callback {
+
+public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     private final ItemTouchHelperAdapter mAdapter;
 
-    public SimpleItemToucHelperCallback(ItemTouchHelperAdapter adapter){
+    public SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter){
         mAdapter = adapter;
     }
 
