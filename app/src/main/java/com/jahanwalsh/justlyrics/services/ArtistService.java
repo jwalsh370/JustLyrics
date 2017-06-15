@@ -65,13 +65,17 @@ public class ArtistService {
 
             }
 
-        } catch (IOException e) {
+        }
+
+        catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         return artists;
+
+
 
     }
 }

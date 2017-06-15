@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
 
                 Intent intent = new Intent(MainActivity.this, ArtistListActivity.class);
+
                 intent.putExtra("artist", artist);
                 intent.putExtra("track", track);
                 startActivity(intent);
