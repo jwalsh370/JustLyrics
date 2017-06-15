@@ -5,16 +5,14 @@ import android.util.Log;
 import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.models.Artist;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import okhttp3.Callback;
-
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -23,7 +21,7 @@ import okhttp3.Response;
 
 public class ArtistService {
 
-    public static void findArtist(String name, String track, Callback callback) {
+    public static void findLyrics(String name, String track, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.API_BASE_URL).newBuilder();
@@ -31,11 +29,9 @@ public class ArtistService {
         urlBuilder.addQueryParameter("callback", "callback");
         urlBuilder.addQueryParameter(Constants.API_TRACK_QUERY_PARAMETER, track);
         urlBuilder.addQueryParameter(Constants.API_ARTIST_QUERY_PARAMETER, name);
-        Log.d("nameTest", "name");
         urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.API_KEY);
 
         String url = urlBuilder.build().toString();
-        Log.d("testArtist", url);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -61,11 +57,8 @@ public class ArtistService {
                     JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
                     String lyric = artistJSON.getString("lyrics_body");
                     String website = artistJSON.getString("html_tracking_url");
-
                     Artist artist = new Artist(lyric, website);
                     artists.add(artist);
-                    Log.v("ARTISTJSON", "LOG AT END OF FOR LOOP processResults(artist) in Service");
-
                 }
             }
 

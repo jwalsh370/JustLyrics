@@ -8,19 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
-//import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -29,7 +21,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static java.security.AccessController.getContext;
+//import com.squareup.picasso.Picasso;
 
 
 public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder> {
@@ -101,9 +93,6 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Ar
             intent.putExtra("artists", Parcels.wrap(mArtists));
 
             mContext.startActivity(intent);
-
-
-
 
             }
         }

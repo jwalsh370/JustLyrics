@@ -4,27 +4,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.TextView;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
-import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.services.ArtistService;
+import com.jahanwalsh.justlyrics.services.LyricService;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 
 
@@ -64,30 +62,24 @@ public class ArtistListActivity extends AppCompatActivity {
         mArtistTextView.setTypeface(streets);
         mTrackTextView.setTypeface(streets);
 
-        getArtist(name, track);
+        getLyrics(name, track);
 
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        mRecentArtist = mSharedPreferences.getString(Constants.PREFERENCES_ARTIST_KEY, "");
-        Log.d("Shared Pref artist", mRecentArtist);
-        if (mRecentArtist != null) {
-            getArtist(mRecentArtist, null);
-        }
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//
+//        mRecentArtist = mSharedPreferences.getString(Constants.PREFERENCES_ARTIST_KEY, "");
+//        if (mRecentArtist != null) {
+//            getArtist(mRecentArtist, null);
+//        }
 
 
     }
 
-
-
-
-    private void getArtists(String name, String track) {
+    public void getLyrics(final String name, final String track) {
 
         final ArtistService artistService = new ArtistService();
-
-
-        artistService.findArtist(name, track, new Callback() {
-
+        artistService.findLyrics(name, track, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -96,9 +88,8 @@ public class ArtistListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-
-
                 mArtists = artistService.processResults(response);
+                getArtist(name, track);
 
                 ArtistListActivity.this.runOnUiThread(new Runnable() {
 
@@ -118,12 +109,11 @@ public class ArtistListActivity extends AppCompatActivity {
         });
     }
 
-    private void getArtist(String name, String track) {
+    public void getArtist(String name, String track) {
 
-        final ArtistService artistService = new ArtistService();
+        final LyricService lyricService = new LyricService();
 
-        artistService.findArtist(name, track, new Callback() {
-
+        lyricService.findArtist(name, track, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -132,27 +122,22 @@ public class ArtistListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-                final ArrayList<Artist> mArtists = artistService.processResults(response);
+                final ArrayList<Artist> mArtists = lyricService.processResults(response);
 
-                ArtistListActivity.this.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-
-                            mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
-                            mRecyclerView.setAdapter(mAdapter);
-                            RecyclerView.LayoutManager layoutManager =
-                                    new LinearLayoutManager(ArtistListActivity.this);
-                            mRecyclerView.setLayoutManager(layoutManager);
-                            mRecyclerView.setHasFixedSize(true);
-                        }
-                    });
-
+//                ArtistListActivity.this.runOnUiThread(new Runnable() {
 //
+//                    @Override
+//                    public void run() {
+//                            mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
+//                            mRecyclerView.setAdapter(mAdapter);
+//                            RecyclerView.LayoutManager layoutManager =
+//                                    new LinearLayoutManager(ArtistListActivity.this);
+//                            mRecyclerView.setLayoutManager(layoutManager);
+//                            mRecyclerView.setHasFixedSize(true);
+//                        }
+//                    });
+
                 }
             });
         }
-
-
     }

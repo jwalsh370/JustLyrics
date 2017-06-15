@@ -33,7 +33,5 @@ public class Artist {
         this.pushId = pushId;
     }
 
-
-
 }
 

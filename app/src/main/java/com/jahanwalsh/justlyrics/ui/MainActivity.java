@@ -158,10 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             String track = mTrackEditText.getText().toString();
-
-
             saveArtistToFirebase(artist);
-
             if (artist.length() == 0)  {
                 mArtistEditText.setError("This field is Required!");
             } else if  (track.length() == 0) {
