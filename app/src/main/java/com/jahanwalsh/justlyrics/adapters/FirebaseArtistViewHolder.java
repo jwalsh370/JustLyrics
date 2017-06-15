@@ -1,9 +1,12 @@
 package com.jahanwalsh.justlyrics.adapters;
 
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,13 +22,15 @@ import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
 import com.jahanwalsh.justlyrics.ui.MainActivity;
+import com.jahanwalsh.justlyrics.util.ItemTouchHelperAdapter;
+import com.jahanwalsh.justlyrics.util.ItemTouchHelperViewHolder;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
 
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
@@ -40,7 +45,6 @@ public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements
             super(itemView);
             mView = itemView;
             mContext = itemView.getContext();
-            itemView.setOnClickListener(this);
         }
 
         public void bindArtist(Artist artist) {
@@ -62,30 +66,52 @@ public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements
 
         }
 
-        @Override
-        public void onClick(View view) {
-            final ArrayList<Artist> artists = new ArrayList<>();
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_ARTISTS);
-            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//        @Override
+//        public void onClick(View view) {
+//            final ArrayList<Artist> artists = new ArrayList<>();
+//            DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_ARTISTS);
+//            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                        artists.add(snapshot.getValue(Artist.class));
+//                    }
+//
+//                    int itemPosition = getLayoutPosition();
+//
+//                    Intent intent = new Intent(mContext, ArtistDetailActivity.class);
+//                    intent.putExtra("position", itemPosition);
+//                    intent.putExtra("artists", Parcels.wrap(artists));
+//                    mContext.startActivity(intent);
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//                }
+//            });
+//        }
 
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        artists.add(snapshot.getValue(Artist.class));
-                    }
+    @Override
+    public void onItemSelected() {
+        Log.d("Animation", "onItemSelected");
 
-                    int itemPosition = getLayoutPosition();
-
-                    Intent intent = new Intent(mContext, ArtistDetailActivity.class);
-                    intent.putExtra("position", itemPosition);
-                    intent.putExtra("artists", Parcels.wrap(artists));
-                    mContext.startActivity(intent);
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
-        }
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_on);
+        set.setTarget(itemView);
+        set.start();
     }
+
+    @Override
+    public void onItemClear() {
+        Log.d("Animation", "onItemClear");
+
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_off);
+        set.setTarget(itemView);
+        set.start();
+    }
+
+
+}
 
