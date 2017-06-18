@@ -15,6 +15,10 @@ import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.services.ArtistService;
+<<<<<<< HEAD
+=======
+import com.jahanwalsh.justlyrics.services.LyricService;
+>>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
 
 import java.io.IOException;
 import java.util.ArrayList;

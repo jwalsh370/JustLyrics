@@ -62,11 +62,11 @@
                 android:id="@+id/lyricTextView"
                 android:layout_width="209dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginStart="16dp"
+                android:text="LYRICS GO HERE"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                tools:layout_editor_absoluteY="213dp" />
 
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
