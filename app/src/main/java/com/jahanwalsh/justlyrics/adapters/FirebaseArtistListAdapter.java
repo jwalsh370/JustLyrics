@@ -1,16 +1,11 @@
 package com.jahanwalsh.justlyrics.adapters;
 
 import android.content.Context;
-<<<<<<< HEAD
 import android.content.Intent;
-=======
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-<<<<<<< HEAD
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,12 +13,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.ui.ArtistDetailActivity;
-import com.jahanwalsh.justlyrics.ui.ArtistDetailFragment;
 import com.jahanwalsh.justlyrics.util.ItemTouchHelperAdapter;
 import com.jahanwalsh.justlyrics.util.OnStartDragListener;
-
 import org.parceler.Parcels;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -35,19 +27,7 @@ public class FirebaseArtistListAdapter extends FirebaseRecyclerAdapter<Artist, F
     private Context mContext;
     private ArrayList<Artist> mArtists = new ArrayList<>();
 
-=======
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Query;
-import com.jahanwalsh.justlyrics.models.Artist;
-import com.jahanwalsh.justlyrics.util.ItemTouchHelperAdapter;
-import com.jahanwalsh.justlyrics.util.OnStartDragListener;
 
-public class FirebaseArtistListAdapter extends FirebaseRecyclerAdapter<Artist, FirebaseArtistViewHolder> implements ItemTouchHelperAdapter {
-
-    private DatabaseReference mRef;
-    private OnStartDragListener mOnStartDragListener;
-    private Context mContext;
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
 
     public FirebaseArtistListAdapter(Class<Artist> modelClass, int modelLayout,
                                      Class<FirebaseArtistViewHolder> viewHolderClass,
@@ -57,7 +37,6 @@ public class FirebaseArtistListAdapter extends FirebaseRecyclerAdapter<Artist, F
         mRef = ref.getRef();
         mOnStartDragListener = onStartDragListener;
         mContext = context;
-<<<<<<< HEAD
 
         mChildEventListener = mRef.addChildEventListener(new ChildEventListener() {
 
@@ -83,44 +62,21 @@ public class FirebaseArtistListAdapter extends FirebaseRecyclerAdapter<Artist, F
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
-=======
-    }
-
-    @Override
-    protected void populateViewHolder(final FirebaseArtistViewHolder viewHolder, Artist model, int position) {
-        viewHolder.bindArtist(model);
-
-        viewHolder.mAlbumImageView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
-                    mOnStartDragListener.onStartDrag(viewHolder);
-                }
-                return false;
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
             }
         });
     }
 
-<<<<<<< HEAD
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
         Collections.swap(mArtists, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
-=======
-    @Override
-    public boolean onItemMove(int fromPosition, int toPosition) {
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
         return false;
     }
 
     @Override
     public void onItemDismiss(int position) {
-<<<<<<< HEAD
         mArtists.remove(position);
-
         getRef(position).removeValue();
 
     }
@@ -145,17 +101,17 @@ public class FirebaseArtistListAdapter extends FirebaseRecyclerAdapter<Artist, F
     protected void populateViewHolder(final FirebaseArtistViewHolder viewHolder, Artist model, int position) {
         viewHolder.bindArtist(model);
 
-//        viewHolder.mAlbumImageView.setOnTouchListener(new View.OnTouchListener() {
-//
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
-//                    mOnStartDragListener.onStartDrag(viewHolder);
-//                }
-//                return false;
-//            }
-//
-//        });
+        viewHolder.mAlbumImageView.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
+                    mOnStartDragListener.onStartDrag(viewHolder);
+                }
+                return false;
+            }
+
+        });
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -167,8 +123,8 @@ public class FirebaseArtistListAdapter extends FirebaseRecyclerAdapter<Artist, F
                 mContext.startActivity(intent);
             }
         });
-=======
 
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
     }
-}
+
+        }
+

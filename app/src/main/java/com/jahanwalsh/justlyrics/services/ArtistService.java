@@ -56,15 +56,9 @@ public class ArtistService {
 
                     JSONObject artistJSON = artistsJSON.getJSONObject("lyrics");
                     String lyric = artistJSON.getString("lyrics_body");
-<<<<<<< HEAD
-//
+
                     Artist artist = new Artist(lyric);
-=======
-//                    String name = artistJSON.getString("artist_name");
-//                    String track = artistJSON.getString("track_name");
-//                    String img = artistJSON.getString("album_coverart_350x350");
-                    Artist artist = new Artist(lyric,null, null, null);
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
+
                     artists.add(artist);
                 }
 

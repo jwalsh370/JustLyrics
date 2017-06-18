@@ -15,20 +15,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-<<<<<<< HEAD
 import com.google.firebase.database.Query;
-=======
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
 import com.jahanwalsh.justlyrics.Constants;
 import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.adapters.FirebaseArtistListAdapter;
 import com.jahanwalsh.justlyrics.adapters.FirebaseArtistViewHolder;
 import com.jahanwalsh.justlyrics.models.Artist;
-<<<<<<< HEAD
-=======
-import com.jahanwalsh.justlyrics.services.LyricService;
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
 import com.jahanwalsh.justlyrics.util.OnStartDragListener;
 import com.jahanwalsh.justlyrics.util.SimpleItemTouchHelperCallback;
 
@@ -47,21 +40,8 @@ public class SavedArtistListActivity extends AppCompatActivity implements OnStar
         private FirebaseArtistListAdapter mFirebaseAdapter;
         private ItemTouchHelper mItemTouchHelper;
 
-<<<<<<< HEAD
         @Bind(R.id.recyclerView)
         RecyclerView mRecyclerView;
-
-=======
-    @Bind(R.id.artistNameTextView)
-    TextView mArtistTextView;
-    @Bind(R.id.trackTextView)
-    TextView mTrackTextView;
-        @Bind(R.id.recyclerView)
-        RecyclerView mRecyclerView;
-
-    private ArtistListAdapter mAdapter;
-
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -72,24 +52,6 @@ public class SavedArtistListActivity extends AppCompatActivity implements OnStar
 
             setUpFirebaseAdapter();
 
-<<<<<<< HEAD
-=======
-            Intent intent = getIntent();
-            String name = intent.getStringExtra("artist");
-            String track = intent.getStringExtra("track");
-
-            mArtistTextView.setText(name);
-            mTrackTextView.setText(track);
-
-            Typeface streets = Typeface.createFromAsset(getAssets(), "fonts/streets.ttf");
-            mArtistTextView.setTypeface(streets);
-            mTrackTextView.setTypeface(streets);
-
-            getArtist(name, track);
-
-
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
-
         }
 
         private void setUpFirebaseAdapter() {
@@ -97,7 +59,6 @@ public class SavedArtistListActivity extends AppCompatActivity implements OnStar
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
 
-<<<<<<< HEAD
             Query query = FirebaseDatabase.getInstance()
                     .getReference(Constants.FIREBASE_CHILD_ARTISTS)
                     .child(uid)
@@ -107,8 +68,7 @@ public class SavedArtistListActivity extends AppCompatActivity implements OnStar
                     R.layout.artist_list_item_drag, FirebaseArtistViewHolder.class,
                     query, this, this);
 
-=======
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
+
             mArtistReference = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_ARTISTS)
@@ -148,43 +108,5 @@ public class SavedArtistListActivity extends AppCompatActivity implements OnStar
             super.onDestroy();
             mFirebaseAdapter.cleanup();
         }
-
-
-<<<<<<< HEAD
-=======
-    public void getArtist(final String name, final String track) {
-        Log.d("HEREHERE", "THS METHOD IS RUNNING");
-
-        final LyricService lyricService = new LyricService();
-
-        lyricService.findArtist(name, track, new Callback() {
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                final ArrayList<Artist> mArtists = lyricService.processResults(response);
-
-                SavedArtistListActivity.this.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                            mAdapter = new ArtistListAdapter(getApplicationContext(), mArtists);
-                            mRecyclerView.setAdapter(mAdapter);
-                            RecyclerView.LayoutManager layoutManager =
-                                    new LinearLayoutManager(SavedArtistListActivity.this);
-                            mRecyclerView.setLayoutManager(layoutManager);
-                            mRecyclerView.setHasFixedSize(true);
-                        }
-                    });
-
-            }
-        });
-    }
->>>>>>> 43ef0b79d0064aec66feceb926a2ac4a08441d5b
-
 
     }
