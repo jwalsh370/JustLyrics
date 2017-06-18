@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,8 +31,7 @@ import java.util.ArrayList;
 
 public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
 
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
+
 
     public ImageView mAlbumImageView;
 
@@ -49,48 +47,11 @@ public class FirebaseArtistViewHolder extends RecyclerView.ViewHolder implements
 
         public void bindArtist(Artist artist) {
             TextView lyricTextView = (TextView) mView.findViewById(R.id.lyricTextView);
-            mAlbumImageView = (ImageView) mView.findViewById(R.id.albumArtImageView);
-            TextView nameTextView = (TextView) mView.findViewById(R.id.artistNameTextView);
-            TextView trackTextView = (TextView) mView.findViewById(R.id.trackTextView);
-
-//            Picasso.with(mContext)
-////                    .load(artist.getImageUrl())
-//                    .resize(MAX_WIDTH, MAX_HEIGHT)
-//                    .centerCrop()
-//                    .into(mAlbumImageView);
+            ImageView albumImageView = (ImageView) mView.findViewById(R.id.albumImageView);
 
             lyricTextView.setText(artist.getLyric());
-//            nameTextView.setText(artist.getName());
-//            trackTextView.setText(artist.gettrack());
-
 
         }
-
-//        @Override
-//        public void onClick(View view) {
-//            final ArrayList<Artist> artists = new ArrayList<>();
-//            DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_ARTISTS);
-//            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                        artists.add(snapshot.getValue(Artist.class));
-//                    }
-//
-//                    int itemPosition = getLayoutPosition();
-//
-//                    Intent intent = new Intent(mContext, ArtistDetailActivity.class);
-//                    intent.putExtra("position", itemPosition);
-//                    intent.putExtra("artists", Parcels.wrap(artists));
-//                    mContext.startActivity(intent);
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//                }
-//            });
-//        }
 
     @Override
     public void onItemSelected() {

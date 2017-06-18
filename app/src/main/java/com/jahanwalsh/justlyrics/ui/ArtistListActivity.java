@@ -15,18 +15,13 @@ import com.jahanwalsh.justlyrics.R;
 import com.jahanwalsh.justlyrics.adapters.ArtistListAdapter;
 import com.jahanwalsh.justlyrics.models.Artist;
 import com.jahanwalsh.justlyrics.services.ArtistService;
-import com.jahanwalsh.justlyrics.services.LyricService;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
-
 
 public class ArtistListActivity extends AppCompatActivity {
 
