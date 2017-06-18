@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "983350536968",
+    "firebase_url": "https://justlyrics-f0da2.firebaseio.com",
+    "project_id": "justlyrics-f0da2",
+    "storage_bucket": "justlyrics-f0da2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983350536968:android:b17a66e987eac77d",
+        "android_client_info": {
+          "package_name": "com.jahanwalsh.justlyrics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983350536968-9iaoe43d41ees2e17f2hcikvhe9gka41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWGbY6Yn94hlVWT36FWMZph08HVcePOr0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

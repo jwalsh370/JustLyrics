@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Just Lyrics</string>
+    <string name="title_activity_lyrics">Lyrics</string>
+    <string name="aboutButton_text">About</string>
+    <string name="about_head">About</string>
+    <string name="about_1">
+        Just Lyrics is a site that aims to provide a very important service. The retrieval of lyrics!
+    </string>
+    <string name="about_2">
+        To often we find ourselves singing along to our favourite songs, but when the music cuts out... we are left mumbling and stumbling through the few verses we know.
+    </string>
+    <string name="about_3">We created Just Lyrics to help ease the burden of forgetfulness. This application is for karaoke enthusiasts, for those who strive to understand the deeper meaning of songs, or just for people who can\'t understand a word of what\'s being said.
+    </string>
+    <string name="about_4">
+           Simply search an artist and track to begin your journey!
+    </string>
+    <string name="about_5">
+           *Unfortunately our API agreement only allows 30% of lyrics to be retrieved. If you would like to learn more visit the MusiXMatch Website.*
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_create_account">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>
