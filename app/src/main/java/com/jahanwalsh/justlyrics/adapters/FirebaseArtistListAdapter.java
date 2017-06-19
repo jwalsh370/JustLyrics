@@ -101,17 +101,17 @@ public class FirebaseArtistListAdapter extends FirebaseRecyclerAdapter<Artist, F
     protected void populateViewHolder(final FirebaseArtistViewHolder viewHolder, Artist model, int position) {
         viewHolder.bindArtist(model);
 
-        viewHolder.mAlbumImageView.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
-                    mOnStartDragListener.onStartDrag(viewHolder);
-                }
-                return false;
-            }
-
-        });
+//        viewHolder.mAlbumImageView.setOnTouchListener(new View.OnTouchListener() {
+//
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
+//                    mOnStartDragListener.onStartDrag(viewHolder);
+//                }
+//                return false;
+//            }
+//
+//        });
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
