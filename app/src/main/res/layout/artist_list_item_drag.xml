@@ -11,7 +11,7 @@
         <ImageView
             android:layout_width="130dp"
             android:layout_height="100dp"
-            android:id="@+id/dragIcon"
+            android:id="@+id/imageView"
             android:src="@drawable/record"
             android:scaleType="centerCrop"/>
 
@@ -24,23 +24,7 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <TextView
-            android:id="@+id/artistNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/trackTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/artistNameTextView"
-            android:textAlignment="viewStart"
-            android:textStyle="bold|italic" />
 
         <ImageView
             android:id="@+id/dragIcon"
